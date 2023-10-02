@@ -14,4 +14,8 @@ I love biology!!
 
 no you love geology more!!!!!!!!!!!!!!!!
 
-commiit but not push
+
+did you guys get this......
+
+now im pushing my love of geology to you
+
