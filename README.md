@@ -15,3 +15,5 @@ I love biology!!
 no you love geology more!!!!!!!!!!!!!!!!
 
 did you guys get this......
+
+now im pushing my love of geology to you
