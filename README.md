@@ -21,3 +21,5 @@ now im pushing my love of geology to you
 
 library(readr)
 global_bleaching_environmental <- read_csv("global_bleaching_environmental.csv")
+
+hi is this working 
