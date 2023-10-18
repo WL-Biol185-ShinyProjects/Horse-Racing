@@ -4,12 +4,12 @@ coral <- read.csv("global_bleaching_environmental.csv")
 
 function(input, output) {
   
-  output$tempPlot <- renderPlot({
+  output$Temperature_Mean <- renderPlot({
     
-    barplot(global_bleaching_environmental[,input$Date_Year],
-            main = input$Date_Year, 
-            ylab = "Sea Surface Temperature",
-            xlab = "Year")
+    plot(coral$Temperature_Mean, coral$Date_Year,
+            main = input$Ocean_Name, 
+            ylab = "Year",
+            xlab = "Sea Surface Temperature")
     
   })
 }
