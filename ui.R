@@ -5,7 +5,7 @@ coral <- read.csv("global_bleaching_environmental.csv")
 fluidPage(
   
   titlePanel("Sea Surface Temperature by Ocean"),
-  
+)
   sidebarLayout(
     sidebarPanel(
       selectInput("Ocean_Name", "Ocean:",
@@ -18,5 +18,5 @@ fluidPage(
       plotOutput("Temperature_Mean")
     )
   )
-)  
+
 
