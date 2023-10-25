@@ -14,10 +14,21 @@ coral %>%
 
 
     
+<<<<<<< HEAD
     # plot(coral$Temperature_Mean, coral$Date_Year,
     # main = input$Ocean_Name,
     # ylab = "Year",
     # xlab = "Sea Surface Temperature"
+=======
+    global_bleaching_environmental %>%
+      filter(Ocean_Name == input$Ocean_Name) %>%
+      ggplot(aes(Date, Temperature_Mean)) + geom_point(color = "blue")
+    
+    #plot(coral$Temperature_Mean, coral$Date_Year,
+            #main = input$Ocean_Name, 
+            #ylab = "Year",
+            #xlab = "Sea Surface Temperature")
+>>>>>>> 292afb6251fadf156e9d1e4b666caf7b6c44635a
     
   #})
 # })
