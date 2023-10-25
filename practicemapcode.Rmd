@@ -1,0 +1,25 @@
+---
+title: "practice for project"
+author: "Abby Portwood"
+date: "10/25/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+library(shiny)
+library(tidyverse)
+library(leaflet)
+
+coral <- read.csv("global_bleaching_environmental.csv")
+
+leaflet(data = coral) %>% 
+  setView(lng = -96.25, lat = 39.50, zoom = 4) %>% 
+  addTiles() %>%
+  addMarkers(popup = ~Ecoregion_Name)
+```
+
