@@ -15,12 +15,14 @@ library(shiny)
 library(tidyverse)
 library(leaflet)
 
-callnamefunction
 
 coral <- read.csv("global_bleaching_environmental.csv")
 
+colnames(coral)[4] <- "lat"
+colnames(coral)[5] <- "lng"
+
 leaflet(data = coral) %>% 
-  setView(lng = -96.25, lat = 39.50, zoom = 4) %>% 
+  setView(lng = 0, lat = 0, zoom = 0) %>% 
   addTiles() %>%
   addMarkers(popup = ~Temperature_Mean)
 ```
