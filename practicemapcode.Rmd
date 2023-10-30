@@ -20,6 +20,6 @@ coral <- read.csv("global_bleaching_environmental.csv")
 leaflet(data = coral) %>% 
   setView(lng = -96.25, lat = 39.50, zoom = 4) %>% 
   addTiles() %>%
-  addMarkers(popup = ~Ecoregion_Name)
+  addMarkers(popup = ~Temperature_Mean)
 ```
 
