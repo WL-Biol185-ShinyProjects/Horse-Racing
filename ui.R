@@ -25,8 +25,8 @@ droppy1 <- fluidPage(
 
 
 sidebar <- dashboardSidebar( 
-  sidebarMenu("SeaSurfaceTemperaturebyOcean", tabName = "SeaSurfaceTemperaturebyOcean", icon = icon("SeaSurfaceTemperaturebyOcean")),
-    menuItem("SeaSurfaceTemperaturebyOcean", icon = icon("th"), tabName = "SeaSurfaceTemperaturebyOcean"
+  sidebarMenu("Sea Surface Temperature by Ocean", tabName = "Sea Surface Temperature by Ocean", icon = icon("Sea Surface Temperature by Ocean")),
+    menuItem("SeaSurfaceTemperaturebyOcean", tabName = "SeaSurfaceTemperaturebyOcean"
            )
   )
 
@@ -34,12 +34,12 @@ sidebar <- dashboardSidebar(
 body <- dashboardBody(
   tabItems(
     tabItem(tabName = "SeaSurfaceTemperaturebyOcean", droppy1
-  ),
+      ),
     
     tabItem(tabName = "SeaSurfaceTemperatureByOcean", droppy1
+      )
     )
   )
-)
 
 dashboardPage(
   dashboardHeader(title = "Coral"),
