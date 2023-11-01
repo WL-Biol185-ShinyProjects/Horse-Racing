@@ -45,8 +45,8 @@ droppy2 <- fluidPage(
 
 sidebar <- dashboardSidebar(
   sidebarMenu("Contents",
-              menuItem("SeaSurfaceTemperaturebyOcean", tabName = "SeaSurfaceTemperaturebyOcean"),    
-              menuItem("PercentBleachingbyOcean", tabName = "PercentBleachingbyOcean")
+              menuItem("SeaSurfaceTemperaturebyOcean", tabName = "SeaSurfaceTemperaturebyOcean", icon = icon("droplet")),    
+              menuItem("PercentBleachingbyOcean", tabName = "PercentBleachingbyOcean", icon = icon("droplet"))
   )
 )
 
@@ -62,7 +62,7 @@ body <- dashboardBody(
 
 
 
-dashboardPage(
+dashboardPage(skin = "green",
   dashboardHeader(title = "Coral"),
   sidebar, 
   body
