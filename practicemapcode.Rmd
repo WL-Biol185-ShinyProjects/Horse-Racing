@@ -1,29 +1,57 @@
----
-title: "practice for project"
-author: "Abby Portwood"
-date: "10/25/2023"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
+<!-- # --- -->
+<!-- # title: "practice for project" -->
+<!-- # author: "Abby Portwood" -->
+<!-- # date: "10/25/2023" -->
+<!-- # output: html_document -->
+<!-- # --- -->
+<!-- # -->
+<!-- # ```{r setup, include=FALSE} -->
+<!-- # knitr::opts_chunk$set(echo = TRUE) -->
+<!-- # ``` -->
+<!-- # -->
+<!-- # ```{r} -->
+<!-- # # -->
+<!-- # # library(shiny) -->
+<!-- # # library(tidyverse) -->
+<!-- # # library(leaflet) -->
+<!-- # # -->
+<!-- # # -->
+<!-- # # coral <- read.csv("global_bleaching_environmental.csv") -->
+<!-- # # -->
+<!-- # # colnames(coral)[4] <- "lat" -->
+<!-- # # colnames(coral)[5] <- "lng" -->
+<!-- # # -->
+<!-- # # leaflet(data = coral) %>% -->
+<!-- # #   setView(lng = 0, lat = 0, zoom = 0) %>% -->
+<!-- # #   addTiles() %>% -->
+<!-- # #   addMarkers(popup = ~Temperature_Mean) -->
+<!-- # ``` -->
+<!-- # -->
+<!-- # ```{r} -->
+<!-- ) -->
+<!-- # -->
+<!-- # ``` -->
+<!-- # -->
+<!-- # -->
+<!-- coral <- read.csv("global_bleaching_environmental.csv") -->
+<!-- # -->
+<!-- # ``` -->
+<!-- # -->
+<!-- # ```{r} -->
 ```{r}
-# 
-# library(shiny)
-# library(tidyverse)
-# library(leaflet)
-# 
-# 
-# coral <- read.csv("global_bleaching_environmental.csv")
-# 
-# colnames(coral)[4] <- "lat"
-# colnames(coral)[5] <- "lng"
-# 
-# leaflet(data = coral) %>% 
-#   setView(lng = 0, lat = 0, zoom = 0) %>% 
-#   addTiles() %>%
-#   addMarkers(popup = ~Temperature_Mean)
+library(shiny)
+library(tidyverse)
+library(ggplot2)
+library(sf)
+
+coral <- read.csv("global_bleaching_environmental.csv")
+
 ```
+
+```{=html}
+
+<iframe src="https://www.arcgis.com/apps/webappviewer/index.html?id=10b69cf3a4c0486381294da8fbd5c7a1" width="100%" height="400"></iframe>
+```
+
+  
 
