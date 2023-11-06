@@ -56,7 +56,7 @@ droppy3 <- fluidPage(
     ),
     
     mainPanel(
-      plotOutput("Temperature_Mean")
+      plotOutput("Temperature_Mean1")
     )
   )
 )
