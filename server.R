@@ -19,6 +19,13 @@ function(input, output) {
       filter(Ocean_Name == input$Ocean_Name1) %>%
       ggplot(aes(Date, Percent_Bleaching)) + geom_point(color = "blue")
   })
+  
+  output$Temperature_Mean <- renderPlot({
+    
+    coral %>%
+      filter(Ecoregion_Name == input$Ecoregion_Name) %>%
+      ggplot(aes(Date, Temperature_Mean)) + geom_point(color = "blue")
+  })
 }
 
 
