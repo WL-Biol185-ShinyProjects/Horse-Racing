@@ -1,7 +1,7 @@
 library(shiny)
 library(tidyverse)
 
-coral <- read.csv("global_bleaching_environmental.csv")
+coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
 function(input, output) {
   

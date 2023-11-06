@@ -1,8 +1,9 @@
 library(shiny)
 library(tidyverse)
-coral <- read.csv("global_bleaching_environmental.csv")
+coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
 library(shinydashboard)
+
 
 droppy1 <- fluidPage(
   
@@ -45,7 +46,8 @@ droppy2 <- fluidPage(
 
 sidebar <- dashboardSidebar(
   sidebarMenu("Contents",
-              menuItem("SeaSurfaceTemperaturebyOcean", tabName = "SeaSurfaceTemperaturebyOcean", icon = icon("droplet")),    
+              menuItem("Home", tabName = "Home", icon = icon("house")),
+              menuItem("SeaSurfaceTemperaturebyOcean", tabName = "SeaSurfaceTemperaturebyOcean", icon = icon("temperature-three-quarters")),    
               menuItem("PercentBleachingbyOcean", tabName = "PercentBleachingbyOcean", icon = icon("droplet"))
   )
 )
@@ -53,6 +55,7 @@ sidebar <- dashboardSidebar(
 
 body <- dashboardBody(
   tabItems(
+    tabItem(tabName = "Home"),
     tabItem(tabName = "SeaSurfaceTemperaturebyOcean", droppy1
     ),
     tabItem(tabName = "PercentBleachingbyOcean", droppy2)
@@ -62,7 +65,7 @@ body <- dashboardBody(
 
 
 
-dashboardPage(skin = "green",
+dashboardPage(skin = "purple",
   dashboardHeader(title = "Coral"),
   sidebar, 
   body
