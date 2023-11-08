@@ -79,9 +79,17 @@ droppy4 <- fluidPage(
   )
 )
 
+droppy5 <- fluidPage(
+  
+  titlePanel("Temperature Mean by Country"),
+  mainPanel(
+    plotOutput("Temperature_Mean2")
+  )
+)
+
 textbox <- fluidPage(
   
-  p("djhedokgjhogijhr")
+  p("here we will put an introduction for our website")
 )
 
 
@@ -91,7 +99,8 @@ sidebar <- dashboardSidebar(
               menuItem("SeaSurfaceTemperaturebyOcean", tabName = "SeaSurfaceTemperaturebyOcean", icon = icon("temperature-three-quarters")),    
               menuItem("PercentBleachingbyOcean", tabName = "PercentBleachingbyOcean", icon = icon("droplet")),
               menuItem("SeaSurfaceTemperaturebyEcoregion", tabName = "SeaSurfaceTemperaturebyEcoregion", icon = icon("droplet")),
-              menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet"))
+              menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet")),
+              menuItem("TemperatureMeanbyCountry", tabName = "TemperatureMeanbyCountry", icon = icon("droplet"))
   )
 )
 
@@ -103,7 +112,8 @@ body <- dashboardBody(
     ),
     tabItem(tabName = "PercentBleachingbyOcean", droppy2),
     tabItem(tabName = "SeaSurfaceTemperaturebyEcoregion", droppy3),
-    tabItem(tabName = "PercentBleachingbyEcoregion", droppy4)
+    tabItem(tabName = "PercentBleachingbyEcoregion", droppy4),
+    tabItem(tabName = "TemperatureMeanbyCountry", droppy5)
   )
 )     
 
@@ -119,6 +129,8 @@ dashboardPage(skin = "purple",
     
 # https://rstudio.github.io/shinydashboard/structure.html
 
+#Coral_Ordered1 <- coral %>% group_by(Country_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
+#ggplot(Coral_Ordered1, aes(Country_Name, aveTemp, fill = Date_Year)) + geom_bar(stat = 'identity', position = "jitter")
 
 
 

@@ -33,6 +33,11 @@ function(input, output) {
       filter(Ecoregion_Name == input$Ecoregion_Name1) %>%
       ggplot(aes(Date, Percent_Bleaching)) + geom_point(color = "blue")
   })
+
+  output$Temperature_Mean2 <- renderPlot({
+    Coral_Ordered1 <- coral %>% group_by(Country_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
+    ggplot(Coral_Ordered1, aes(Country_Name, aveTemp, fill = Date_Year)) + geom_bar(stat = 'identity', position = "jitter")
+  })
 }
 
 
