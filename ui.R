@@ -61,13 +61,31 @@ droppy3 <- fluidPage(
   )
 )
 
+droppy4 <- fluidPage(
+  
+  titlePanel("Percent Bleaching by Ecoregion"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("Ecoregion_Name1", "Ecoregion:",
+                  choices = unique(coral$Ecoregion_Name)),
+      hr(),
+      helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
+    ),
+    
+    mainPanel(
+      plotOutput("Percent_Bleaching1")
+    )
+  )
+)
 
 sidebar <- dashboardSidebar(
   sidebarMenu("Contents",
               menuItem("Home", tabName = "Home", icon = icon("house")),
               menuItem("SeaSurfaceTemperaturebyOcean", tabName = "SeaSurfaceTemperaturebyOcean", icon = icon("temperature-three-quarters")),    
               menuItem("PercentBleachingbyOcean", tabName = "PercentBleachingbyOcean", icon = icon("droplet")),
-              menuItem("SeaSurfaceTemperaturebyEcoregion", tabName = "SeaSurfaceTemperaturebyEcoregion", icon = icon("droplet"))
+              menuItem("SeaSurfaceTemperaturebyEcoregion", tabName = "SeaSurfaceTemperaturebyEcoregion", icon = icon("droplet")),
+              menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet"))
   )
 )
 
@@ -78,7 +96,8 @@ body <- dashboardBody(
     tabItem(tabName = "SeaSurfaceTemperaturebyOcean", droppy1
     ),
     tabItem(tabName = "PercentBleachingbyOcean", droppy2),
-    tabItem(tabName = "SeaSurfaceTemperaturebyEcoregion", droppy3)
+    tabItem(tabName = "SeaSurfaceTemperaturebyEcoregion", droppy3),
+    tabItem(tabName = "PercentBleachingbyEcoregion", droppy4)
   )
 )     
 
