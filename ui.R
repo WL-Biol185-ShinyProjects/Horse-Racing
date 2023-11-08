@@ -79,6 +79,12 @@ droppy4 <- fluidPage(
   )
 )
 
+textbox <- fluidPage(
+  
+  p("djhedokgjhogijhr")
+)
+
+
 sidebar <- dashboardSidebar(
   sidebarMenu("Contents",
               menuItem("Home", tabName = "Home", icon = icon("house")),
@@ -92,7 +98,7 @@ sidebar <- dashboardSidebar(
 
 body <- dashboardBody(
   tabItems(
-    tabItem(tabName = "Home"),
+    tabItem(tabName = "Home", textbox),
     tabItem(tabName = "SeaSurfaceTemperaturebyOcean", droppy1
     ),
     tabItem(tabName = "PercentBleachingbyOcean", droppy2),
