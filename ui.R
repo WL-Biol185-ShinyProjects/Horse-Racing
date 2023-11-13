@@ -80,7 +80,9 @@ droppy4 <- fluidPage(
 )
 
 droppy5 <- fluidPage(
-  
+  sliderInput("Date_Year", "Years:",
+              min = 1980, max = 2020, value = 2000, step =NULL
+              ),
   titlePanel("Temperature Mean by Country"),
   mainPanel(
     plotOutput("Temperature_Mean2")
