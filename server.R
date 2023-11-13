@@ -3,6 +3,8 @@ library(tidyverse)
 
 coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
+Coral_Ordered1 <- coral %>% group_by(Country_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
+
 function(input, output) {
   
   output$Temperature_Mean <- renderPlot({
@@ -35,8 +37,10 @@ function(input, output) {
   })
 
   output$Temperature_Mean2 <- renderPlot({
-    Coral_Ordered1 <- coral %>% group_by(Country_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
-    ggplot(Coral_Ordered1, aes(Country_Name, aveTemp, fill = Date_Year)) + geom_bar(stat = 'identity', position = "jitter")
+    
+    Coral_Ordered1 %>%
+      filter(Date_Year == input$Date_Year) %>%
+      ggplot(aes(Country_Name, aveTemp)) + geom_bar(stat = 'identity', position = "jitter")
   })
 }
 
