@@ -80,12 +80,16 @@ droppy4 <- fluidPage(
 )
 
 droppy5 <- fluidPage(
+  box(
+    title = "Histogram", status = "primary", solidHeader = TRUE, collapsible = TRUE,
+    plotOutput("Temperature_Mean2", height = 250)
+  ),
+  box(
+    title = "Inputs", status = "warning", solidHeader = TRUE,
   sliderInput("Date_Year", "Year:",
               min = 1980, max = 2020, value = 2000, step =NULL
-              ),
-  titlePanel("Temperature Mean by Country"),
-  mainPanel(
-    plotOutput("Temperature_Mean2")
+              )
+  
   )
 )
 
