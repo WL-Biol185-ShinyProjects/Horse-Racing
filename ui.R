@@ -62,30 +62,27 @@ droppy3 <- fluidPage(
 )
 
 droppy4 <- fluidPage(
-  
-  titlePanel("Percent Bleaching by Ecoregion"),
-  
-  sidebarLayout(
-    sidebarPanel(
+  box(title = "Percent Bleaching by Ecoregion", status = "warning", solidHeader = TRUE, background = NULL, width = 4,
       selectInput("Ecoregion_Name1", "Ecoregion:",
                   choices = unique(coral$Ecoregion_Name)),
       hr(),
       helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
     ),
+  
     
-    mainPanel(
-      plotOutput("Percent_Bleaching1")
-    )
+  box(title = "Percent Bleaching", status = "primary", solidHeader = TRUE, background = NULL, width = 8, plotOutput("Percent_Bleaching1", height = 500)
   )
 )
+  
+
 
 droppy5 <- fluidPage(
   box(
-    title = "Temperature Mean by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE,
-    plotOutput("Temperature_Mean2", height = 250)
+    title = "Temperature Mean by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 8, 
+    plotOutput("Temperature_Mean2", height = 500)
     ),
   box(
-    title = "Inputs", status = "warning", solidHeader = TRUE,
+    title = "Inputs", status = "warning", solidHeader = TRUE, width = 4,
   sliderInput("Date_Year", "Year:",
               min = 1980, max = 2020, value = 2000, step =NULL
               )
