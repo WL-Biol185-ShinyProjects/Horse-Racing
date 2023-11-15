@@ -79,7 +79,7 @@ droppy4 <- fluidPage(
 droppy5 <- fluidPage(
   box(
     title = "Temperature Mean by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 8, 
-    plotOutput("Temperature_Mean2", height = 500)
+    plotOutput("Temperature_Mean2", height = 750)
     ),
   box(
     title = "Inputs", status = "warning", solidHeader = TRUE, width = 4,
