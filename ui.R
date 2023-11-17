@@ -6,23 +6,17 @@ library(shinydashboard)
 
 
 droppy1 <- fluidPage(
-  
-  
-    titlePanel("Sea Surface Temperature by Ocean"),
-  
-    sidebarLayout(
-      sidebarPanel(
+  box(title = "Input", status = "warning", solidHeader = TRUE, width = 4,
         selectInput("Ocean_Name", "Ocean:",
                   choices = unique(coral$Ocean_Name)),
         hr(),
         helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
       ),
     
-      mainPanel(
-        plotOutput("Temperature_Mean")
+  box(title = "Sea Surface Temperature by Ocean", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Temperature_Mean", height = 500)
         )
       )
-    )
+    
 
 droppy2 <- fluidPage(
   
