@@ -5,30 +5,32 @@ coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
 Coral_Ordered1 <- coral %>% group_by(Country_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
 Coral_Ordered2 <- coral %>% group_by(Ecoregion_Name, Date_Year) %>% summarise(aveBleach = mean(Percent_Bleaching, na.rm = TRUE))
-
+Coral_Ordered3 <- coral %>% group_by(Ocean_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
+Coral_Ordered4 <- coral %>% group_by(Ocean_Name, Date_Year) %>% summarise(aveBleach = mean(Percent_Bleaching, na.rm = TRUE))
+Coral_Ordered5 <- coral %>% group_by(Ecoregion_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
 
 function(input, output) {
   
   output$Temperature_Mean <- renderPlot({
 
-    coral %>%
+    Coral_Ordered3 %>%
       filter(Ocean_Name == input$Ocean_Name) %>%
-      ggplot(aes(Date, Temperature_Mean)) + geom_point(color = "blue") 
+      ggplot(aes(Date_Year, aveTemp)) + geom_point(color = "blue") 
 
   })
   
   output$Percent_Bleaching <- renderPlot({
     
-    coral %>%
+    Coral_Ordered4 %>%
       filter(Ocean_Name == input$Ocean_Name1) %>%
-      ggplot(aes(Date, Percent_Bleaching)) + geom_point(color = "blue")
+      ggplot(aes(Date_Year, aveBleach)) + geom_point(color = "blue") 
   })
   
   output$Temperature_Mean1 <- renderPlot({
     
-    coral %>%
+    Coral_Ordered5 %>%
       filter(Ecoregion_Name == input$Ecoregion_Name) %>%
-      ggplot(aes(Date, Temperature_Mean)) + geom_point(color = "blue")
+      ggplot(aes(Date_Year, aveTemp)) + geom_point(color = "blue")
   })
   
   output$Percent_Bleaching1 <- renderPlot({
