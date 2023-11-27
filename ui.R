@@ -99,10 +99,12 @@ droppy6 <- fluidPage(
 )
 
 mappy1 <- fluidPage(
-  leafletOutput("map"),
+  box(
+    title = "Locations for Data Collected", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
+    leafletOutput("map", height = 1000),
   verbatimTextOutput("location_info")
+  )
 )
-
 
 # textbox <- fluidPage(
 #   p("Here we will put an introduction for our website.")
