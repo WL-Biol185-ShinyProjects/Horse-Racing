@@ -10,7 +10,7 @@ library(shinydashboard)
 
 
 droppy1 <- fluidPage(
-  box(title = "Input", status = "warning", solidHeader = TRUE, width = 4,
+  box(title = "Ocean", status = "warning", solidHeader = TRUE, width = 4,
       selectInput("Ocean_Name", "Ocean:",
                   choices = unique(coral$Ocean_Name)),
       hr(),
@@ -25,46 +25,36 @@ droppy1 <- fluidPage(
 
 droppy2 <- fluidPage(
   
-  
-  titlePanel("Percent Bleaching by Ocean"),
-  
-  sidebarLayout(
-    sidebarPanel(
+  box(title = "Ocean", status = "warning", solidHeader = TRUE, width = 4,
       selectInput("Ocean_Name1", "Ocean:",
                   choices = unique(coral$Ocean_Name)),
       hr(),
       helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
     ),
-    
-    mainPanel(
-      plotOutput("Percent_Bleaching"),
-      helpText("This plot shows the percentage of bleaching over time for the selected ocean.")
+  
+  box(title = "Percent Bleaching by Ocean", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Percent_Bleaching", height = 500)
+  ),
+  helpText("This plot shows the percentage of bleaching over time for the selected ocean.")
       
     )
-  )
-)
+
 
 droppy3 <- fluidPage(
   
-  titlePanel("Sea Surface Temperature by Ecoregion"),
-  
-  sidebarLayout(
-    sidebarPanel(
+  box(title = "Ecoregion", status = "warning", solidHeader = TRUE, width = 4,
       selectInput("Ecoregion_Name", "Ecoregion:",
                   choices = unique(coral$Ecoregion_Name)),
       hr(),
       helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
     ),
     
-    mainPanel(
-      plotOutput("Temperature_Mean1"),
-      helpText("This plot displays the sea surface temperature variation over time for the selected ecoregion.")
+  box(title = "Sea Surface Temperature (kelvin) by Ecoregion", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Temperature_Mean1", height = 500)
+  ),
+  helpText("This plot displays the sea surface temperature variation over time for the selected ecoregion.")
     )
-  )
-)
 
 droppy4 <- fluidPage(
-  box(title = "Percent Bleaching by Ecoregion", status = "warning", solidHeader = TRUE, background = NULL, width = 4,
+  box(title = "Ecoregion", status = "warning", solidHeader = TRUE, background = NULL, width = 4,
       selectInput("Ecoregion_Name1", "Ecoregion:",
                   choices = unique(coral$Ecoregion_Name)),
       hr(),
@@ -72,7 +62,7 @@ droppy4 <- fluidPage(
   ),
   
   
-  box(title = "Percent Bleaching", status = "primary", solidHeader = TRUE, background = NULL, width = 8, plotOutput("Percent_Bleaching1", height = 500)
+  box(title = "Percent Bleaching by Ecoregion", status = "primary", solidHeader = TRUE, background = NULL, width = 8, plotOutput("Percent_Bleaching1", height = 500)
   ),
   helpText("This plot shows the percentage of bleaching over time for the selected ecoregion.")
 )
@@ -97,8 +87,8 @@ droppy5 <- fluidPage(
 
 
 droppy6 <- fluidPage(
-  titlePanel("Zoomable Density Plot of Percent Bleaching"),
-  mainPanel(
+  box(
+  title = "Zoomable Density Plot of Percent Bleaching", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
     plotlyOutput("zoomableDensityPlot"),
     helpText("This plot represents the density distribution of percent bleaching over different years with zooming capabilities.")
   )
