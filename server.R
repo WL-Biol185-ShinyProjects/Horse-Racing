@@ -38,6 +38,7 @@ function(input, output) {
   })
   
   # droppy2
+  #add transformation
   output$Percent_Bleaching <- renderPlot({
     plot_data <- Coral_Ordered4 %>%
       filter(Ocean_Name == input$Ocean_Name)
@@ -65,13 +66,13 @@ function(input, output) {
   
   
   #droppy3
-  #add transformation and r squared
+  #add transformation
   
   output$Temperature_Mean1 <- renderPlot({
     plot_data <- Coral_Ordered5 %>%
       filter(Ecoregion_Name == input$Ecoregion_Name) 
     
-    if (nrow(plot_data) == 0) {
+    if(nrow(plot_data) ==0){
       return(NULL)
     }
     
@@ -81,6 +82,7 @@ function(input, output) {
     p <- ggplot(plot_data, aes(Date_Year, aveTemp)) +
       geom_point(color = "blue") +
       geom_smooth(method = "lm", se = FALSE, color = "red") +  # Add red regression line
+      
       labs(
         title = "Temperature by Ecoregion",
         x = "Year",
@@ -90,8 +92,8 @@ function(input, output) {
                label = paste("R-squared =", round(rsquared, 4)), hjust = 1, vjust = 1, color = "red")
     
     print(p)
+
   })
-  
   
   #droppy4
   #add transformation and why isn't r squared showing
