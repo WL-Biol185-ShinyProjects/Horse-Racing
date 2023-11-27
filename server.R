@@ -22,7 +22,7 @@ function(input, output) {
   output$Percent_Bleaching <- renderPlot({
     
     Coral_Ordered4 %>%
-      filter(Ocean_Name == input$Ocean_Name1) %>%
+      filter(Ocean_Name == input$Ocean_Name) %>%
       ggplot(aes(Date_Year, aveBleach)) + geom_point(color = "blue") 
   })
   
