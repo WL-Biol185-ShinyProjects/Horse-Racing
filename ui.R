@@ -1,5 +1,9 @@
 library(shiny)
 library(tidyverse)
+library(plotly)
+library(shinydashboard)
+library(leaflet)
+
 coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
 library(shinydashboard)
@@ -84,20 +88,61 @@ droppy5 <- fluidPage(
   )
 )
 
-textbox <- fluidPage(
-  
-  p("here we will put an introduction for our website")
+
+
+droppy6 <- fluidPage(
+  titlePanel("Zoomable Density Plot of Percent Bleaching"),
+  mainPanel(
+    plotlyOutput("zoomableDensityPlot"),
+    helpText("This plot represents the density distribution of percent bleaching over different years with zooming capabilities.")
+  )
+)
+
+mappy1 <- fluidPage(
+  leafletOutput("map"),
+  verbatimTextOutput("location_info")
 )
 
 
-sidebar <- dashboardSidebar(
-  sidebarMenu("Contents",
-              menuItem("Home", tabName = "Home", icon = icon("house")),
-              menuItem("SeaSurfaceTemperaturebyOcean", tabName = "SeaSurfaceTemperaturebyOcean", icon = icon("temperature-three-quarters")),    
-              menuItem("PercentBleachingbyOcean", tabName = "PercentBleachingbyOcean", icon = icon("droplet")),
-              menuItem("SeaSurfaceTemperaturebyEcoregion", tabName = "SeaSurfaceTemperaturebyEcoregion", icon = icon("droplet")),
-              menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet")),
-              menuItem("TemperatureMeanbyCountry", tabName = "TemperatureMeanbyCountry", icon = icon("droplet"))
+# textbox <- fluidPage(
+#   p("Here we will put an introduction for our website.")
+# )
+
+textbox <- fluidPage(
+  titlePanel("Welcome to the Coral Reefs Dashboard"),
+  #sidebarLayout(
+  #sidebarPanel(width = 3, ""),
+  mainPanel(
+    fluidRow(
+      column(
+        width = 12,
+        tags$img(src = "https://rstudioworkbench.wlu.edu/s/fdf7f96ca1b478d511567/files/Horse-Racing/coralbanner.png", width = "100%")
+      )
+    ),
+    fluidRow(
+      column(
+        width = 12,
+        box(
+          title = "Introduction",
+          status = "primary", 
+          solidHeader = TRUE,
+          width = 12,
+          p("This dashboard provides insights into ocean temperatures, coral bleaching, and more...")
+        )
+      )
+    ),
+    fluidRow(
+      column(
+        width = 12,
+        box(
+          title = "Dashboard Features",
+          status = "info",
+          solidHeader = TRUE,
+          width = 12,
+          "Here you can find information on different aspects related to coral reefs and ocean data."
+        )
+      )
+    )
   )
 )
 
@@ -105,23 +150,35 @@ sidebar <- dashboardSidebar(
 body <- dashboardBody(
   tabItems(
     tabItem(tabName = "Home", textbox),
-    tabItem(tabName = "SeaSurfaceTemperaturebyOcean", droppy1
-    ),
+    tabItem(tabName = "SeaSurfaceTemperaturebyOcean", droppy1),
     tabItem(tabName = "PercentBleachingbyOcean", droppy2),
     tabItem(tabName = "SeaSurfaceTemperaturebyEcoregion", droppy3),
     tabItem(tabName = "PercentBleachingbyEcoregion", droppy4),
-    tabItem(tabName = "TemperatureMeanbyCountry", droppy5)
+    tabItem(tabName = "TemperatureMeanbyCountry", droppy5),
+    tabItem(tabName = "densityPlot", droppy6),
+    tabItem(tabName = "map", mappy1)
+    
   )
-)     
-
-
-
+)
 
 dashboardPage(skin = "purple",
               dashboardHeader(title = "Coral"),
-              sidebar, 
+              dashboardSidebar(
+                sidebarMenu("Contents",
+                            menuItem("Home", tabName = "Home", icon = icon("house")),
+                            menuItem("SeaSurfaceTemperaturebyOcean", tabName = "SeaSurfaceTemperaturebyOcean", icon = icon("temperature-three-quarters")),    
+                            menuItem("PercentBleachingbyOcean", tabName = "PercentBleachingbyOcean", icon = icon("droplet")),
+                            menuItem("SeaSurfaceTemperaturebyEcoregion", tabName = "SeaSurfaceTemperaturebyEcoregion", icon = icon("droplet")),
+                            menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet")),
+                            menuItem("TemperatureMeanbyCountry", tabName = "TemperatureMeanbyCountry", icon = icon("droplet")),
+                            menuItem("DensityPlot", tabName = "densityPlot", icon = icon("droplet")),
+                            menuItem("Map", tabName = "map", icon = icon("droplet"))
+                            
+                )
+              ),
               body
 )
+
 
 
 # https://rstudio.github.io/shinydashboard/structure.html
