@@ -65,21 +65,61 @@ function(input, output) {
   
   
   #droppy3
+  #add transformation and r squared
   
   output$Temperature_Mean1 <- renderPlot({
+    plot_data <- Coral_Ordered5 %>%
+      filter(Ecoregion_Name == input$Ecoregion_Name) 
     
-    Coral_Ordered5 %>%
-      filter(Ecoregion_Name == input$Ecoregion_Name) %>%
-      ggplot(aes(Date_Year, aveTemp)) + geom_point(color = "blue")
+    if (nrow(plot_data) == 0) {
+      return(NULL)
+    }
+    
+    lm_model <- lm(aveTemp ~ Date_Year, data = plot_data)
+    rsquared <- summary(lm_model)$r.squared
+    
+    p <- ggplot(plot_data, aes(Date_Year, aveTemp)) +
+      geom_point(color = "blue") +
+      geom_smooth(method = "lm", se = FALSE, color = "red") +  # Add red regression line
+      labs(
+        title = "Temperature by Ecoregion",
+        x = "Year",
+        y = "Temperature"
+      ) +
+      annotate("text", x = max(plot_data$Date_Year), y = max(plot_data$aveTemp), 
+               label = paste("R-squared =", round(rsquared, 4)), hjust = 1, vjust = 1, color = "red")
+    
+    print(p)
   })
   
+  
   #droppy4
+  #add transformation and why isn't r squared showing
   
   output$Percent_Bleaching1 <- renderPlot({
+    plot_data <- Coral_Ordered2 %>%
+      filter(Ecoregion_Name == input$Ecoregion_Name1)
     
-    Coral_Ordered2 %>%
-      filter(Ecoregion_Name == input$Ecoregion_Name1) %>%
-      ggplot(aes(Date_Year, aveBleach)) + geom_point(color = "blue") 
+    if (nrow(plot_data) == 0) {
+      return(NULL)  # Return NULL if data is empty
+    }
+    
+    p <- plot_data %>%
+      ggplot(aes(Date_Year, aveBleach)) + 
+      geom_point(color = "blue") +
+      geom_smooth(method = "lm", se = FALSE, color = "red") +  # Add red regression line
+      labs(
+        title = "Percent Bleaching by Ecoregion",
+        x = "Date Year",
+        y = "Percent Bleaching"
+      )
+    
+    lm_model <- lm(aveBleach ~ Date_Year, data = plot_data)
+    rsquared <- summary(lm_model)$r.squared
+    
+    p + 
+      annotate("text", x = max(plot_data$Date_Year), y = max(plot_data$aveBleach), 
+               label = paste("R-squared =", round(rsquared, 4)), hjust = 1, vjust = 1, color = "red")
   })
   
   #droppy5
