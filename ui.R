@@ -124,7 +124,7 @@ textbox <- fluidPage(
     fluidRow(
       column(
         width = 12,
-        tags$img(src = "coralbanner.png", width = "100%")
+        tags$img(src = "https://upload.wikimedia.org/wikipedia/commons/a/a4/Coral-banner.jpg", width = "75%")
       )
     ),
     fluidRow(
