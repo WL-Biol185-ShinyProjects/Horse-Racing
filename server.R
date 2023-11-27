@@ -46,18 +46,16 @@ function(input, output) {
       filter(Date_Year == input$Date_Year) %>%
       ggplot(aes(Country_Name, aveTemp)) + geom_bar(stat = 'identity', position = "jitter") + scale_x_discrete(guide = guide_axis(angle = 90)) + NULL
   })
+
+    output$zoomableDensityPlot <- renderPlotly({
+      plot_ly(data = coral, x = ~Percent_Bleaching, color = ~as.factor(Date_Year), type = 'histogram') %>%
+        layout(title = "Density Plot of Percent Bleaching by Year",
+               xaxis = list(title = "Percent Bleaching"),
+               yaxis = list(title = "Density"),
+               dragmode = "zoom")  # Enable zoom only
+    })
+
   
-  output$zoomableDensityPlot <- renderPlotly({
-    p <- ggplot(coral, aes(x = Percent_Bleaching, fill = as.factor(Date_Year))) +
-      geom_density(alpha = 0.5) +
-      labs(title = "Density Plot of Percent Bleaching by Year",
-           x = "Percent Bleaching",
-           y = "Density") +
-      theme_minimal()
-    
-    ggplotly(p) %>%
-      layout(dragmode = "select")  # Allow for box selection
-  })
  
   #MAP HERE ABBY
   
