@@ -51,9 +51,11 @@ function(input, output) {
       plot_ly(data = coral, x = ~Percent_Bleaching, color = ~as.factor(Date_Year), type = 'histogram') %>%
         layout(title = "Density Plot of Percent Bleaching by Year",
                xaxis = list(title = "Percent Bleaching"),
-               yaxis = list(title = "Density"),
+               yaxis = list(title = "Density", type = "log"),  # Apply log scale to y-axis
                dragmode = "zoom")  # Enable zoom only
     })
+  
+  
 
   
  
