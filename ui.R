@@ -10,33 +10,32 @@ library(shinydashboard)
 
 
 droppy1 <- fluidPage(
-  box(title = "Ocean", status = "warning", solidHeader = TRUE, width = 4,
+  fluidRow(
+    column(width = 4,
+      box(title = "Ocean", status = "warning", solidHeader = TRUE, width = 4,
       selectInput("Ocean_Name", "Ocean:",
                   choices = unique(coral$Ocean_Name)),
       hr(),
       helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
-  ),
-  
-  box(title = "Sea Surface Temperature by Ocean", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Temperature_Mean", height = 500)
+      )
+    ),
+    column( width= 8,
+            box(title = "Sea Surface Temperature by Ocean", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Temperature_Mean", height = 500)
   ),
   helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
-)
-
-
-droppy2 <- fluidPage(
+  )
+  ),
   
-  box(title = "Ocean", status = "warning", solidHeader = TRUE, width = 4,
-      selectInput("Ocean_Name1", "Ocean:",
-                  choices = unique(coral$Ocean_Name)),
-      hr(),
-      helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
-    ),
-  
-  box(title = "Percent Bleaching by Ocean", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Percent_Bleaching", height = 500)
+  fluidRow(
+    column(width = 4),
+    column(width = 8,
+           box(title = "Percent Bleaching by Ocean", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Percent_Bleaching", height = 500)
   ),
   helpText("This plot shows the percentage of bleaching over time for the selected ocean.")
-      
-    )
+)
+  )
+)
+
 
 
 droppy3 <- fluidPage(
@@ -76,7 +75,7 @@ droppy5 <- fluidPage(
   ),
   helpText("This plot displays the mean temperature by country for the selected year."),
   box(
-    title = "Inputs", status = "warning", solidHeader = TRUE, width = 4,
+    title = "Year", status = "warning", solidHeader = TRUE, width = 4,
     sliderInput("Date_Year", "Year:",
                 min = 1980, max = 2020, value = 2000, step =NULL
     )
@@ -149,7 +148,6 @@ body <- dashboardBody(
   tabItems(
     tabItem(tabName = "Home", textbox),
     tabItem(tabName = "SeaSurfaceTemperaturebyOcean", droppy1),
-    tabItem(tabName = "PercentBleachingbyOcean", droppy2),
     tabItem(tabName = "SeaSurfaceTemperaturebyEcoregion", droppy3),
     tabItem(tabName = "PercentBleachingbyEcoregion", droppy4),
     tabItem(tabName = "TemperatureMeanbyCountry", droppy5),
