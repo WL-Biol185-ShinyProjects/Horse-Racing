@@ -18,7 +18,8 @@ droppy1 <- fluidPage(
   ),
   
   box(title = "Sea Surface Temperature by Ocean", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Temperature_Mean", height = 500)
-  )
+  ),
+  helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
 )
 
 
@@ -36,7 +37,9 @@ droppy2 <- fluidPage(
     ),
     
     mainPanel(
-      plotOutput("Percent_Bleaching")
+      plotOutput("Percent_Bleaching"),
+      helpText("This plot shows the percentage of bleaching over time for the selected ocean.")
+      
     )
   )
 )
@@ -54,7 +57,8 @@ droppy3 <- fluidPage(
     ),
     
     mainPanel(
-      plotOutput("Temperature_Mean1")
+      plotOutput("Temperature_Mean1"),
+      helpText("This plot displays the sea surface temperature variation over time for the selected ecoregion.")
     )
   )
 )
@@ -69,7 +73,8 @@ droppy4 <- fluidPage(
   
   
   box(title = "Percent Bleaching", status = "primary", solidHeader = TRUE, background = NULL, width = 8, plotOutput("Percent_Bleaching1", height = 500)
-  )
+  ),
+  helpText("This plot shows the percentage of bleaching over time for the selected ecoregion.")
 )
 
 
@@ -79,6 +84,7 @@ droppy5 <- fluidPage(
     title = "Temperature Mean by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 8, 
     plotOutput("Temperature_Mean2", height = 750)
   ),
+  helpText("This plot displays the mean temperature by country for the selected year."),
   box(
     title = "Inputs", status = "warning", solidHeader = TRUE, width = 4,
     sliderInput("Date_Year", "Year:",
