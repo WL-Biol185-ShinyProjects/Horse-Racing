@@ -11,20 +11,60 @@ Coral_Ordered5 <- coral %>% group_by(Ecoregion_Name, Date_Year) %>% summarise(av
 
 function(input, output) {
   
+  # droppy1
   output$Temperature_Mean <- renderPlot({
+    plot_data <- Coral_Ordered3 %>%
+      filter(Ocean_Name == input$Ocean_Name)
     
-    Coral_Ordered3 %>%
-      filter(Ocean_Name == input$Ocean_Name) %>%
-      ggplot(aes(Date_Year, aveTemp)) + geom_point(color = "blue") 
+    if (nrow(plot_data) == 0) {
+      return(NULL)  # Return NULL if data is empty
+    }
     
+    lm_model <- lm(aveTemp ~ Date_Year, data = plot_data)
+    rsquared <- summary(lm_model)$r.squared
+    
+    p <- ggplot(plot_data, aes(Date_Year, aveTemp)) + 
+      geom_point(color = "blue") +
+      geom_smooth(method = "lm", se = FALSE, color = "red") +  # Add red regression line
+      labs(
+        title = "Temperature by Ocean",
+        x = "Year",
+        y = "Temperature"
+      ) +
+      annotate("text", x = max(plot_data$Date_Year), y = max(plot_data$aveTemp), 
+               label = paste("R-squared =", round(rsquared, 4)), hjust = 1, vjust = 1, color = "red")
+    
+    print(p)
   })
   
+  # droppy2
   output$Percent_Bleaching <- renderPlot({
+    plot_data <- Coral_Ordered4 %>%
+      filter(Ocean_Name == input$Ocean_Name)
     
-    Coral_Ordered4 %>%
-      filter(Ocean_Name == input$Ocean_Name) %>%
-      ggplot(aes(Date_Year, aveBleach)) + geom_point(color = "blue") 
+    if (nrow(plot_data) == 0) {
+      return(NULL)  # Return NULL if data is empty
+    }
+    
+    lm_model <- lm(aveBleach ~ Date_Year, data = plot_data)
+    rsquared <- summary(lm_model)$r.squared
+    
+    p <- ggplot(plot_data, aes(Date_Year, aveBleach)) + 
+      geom_point(color = "blue") +
+      geom_smooth(method = "lm", se = FALSE, color = "red") +  # Add red regression line
+      labs(
+        title = "Percent Bleaching by Ocean",
+        x = "Date Year",
+        y = "Percent Bleaching"
+      ) +
+      annotate("text", x = max(plot_data$Date_Year), y = max(plot_data$aveBleach), 
+               label = paste("R-squared =", round(rsquared, 4)), hjust = 1, vjust = 1, color = "red")
+    
+    print(p)
   })
+  
+  
+  #droppy3
   
   output$Temperature_Mean1 <- renderPlot({
     
@@ -33,12 +73,16 @@ function(input, output) {
       ggplot(aes(Date_Year, aveTemp)) + geom_point(color = "blue")
   })
   
+  #droppy4
+  
   output$Percent_Bleaching1 <- renderPlot({
     
     Coral_Ordered2 %>%
       filter(Ecoregion_Name == input$Ecoregion_Name1) %>%
       ggplot(aes(Date_Year, aveBleach)) + geom_point(color = "blue") 
   })
+  
+  #droppy5
   
   output$Temperature_Mean2 <- renderPlot({
     
@@ -47,6 +91,8 @@ function(input, output) {
       ggplot(aes(Country_Name, aveTemp)) + geom_bar(stat = 'identity', position = "jitter") + scale_x_discrete(guide = guide_axis(angle = 90)) + NULL
   })
 
+  #density1
+  
     output$zoomableDensityPlot <- renderPlotly({
       plot_ly(data = coral, x = ~Percent_Bleaching, color = ~as.factor(Date_Year), type = 'histogram') %>%
         layout(title = "Density Plot of Percent Bleaching by Year",
@@ -54,9 +100,6 @@ function(input, output) {
                yaxis = list(title = "Density", type = "log"),  # Apply log scale to y-axis
                dragmode = "zoom")  # Enable zoom only
     })
-  
-  
-
   
  
   #MAP HERE ABBY
