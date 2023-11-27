@@ -58,6 +58,8 @@ function(input, output) {
     ggplotly(p) %>%
       layout(dragmode = "select")  # Allow for box selection
   })
+ 
+  #MAP HERE ABBY
   
   output$map <- renderLeaflet({
     
@@ -68,27 +70,31 @@ function(input, output) {
       addTiles() %>%
       addMarkers(~Longitude_Degrees, ~Latitude_Degrees, popup = ~Site_Name)
   })
-  
-  output$location_info <- renderPrint({
+    
+  output$site_name_output <- renderText({
+    req(input$map_marker_click)
     click <- input$map_marker_click
-    if (!is.null(click)) {
-      selected_row <- coral[coral$Site_Name == click$id, ]
-      selected_info <- paste(
-        "Site Name: ", selected_row$Site_Name,
-        "\nOcean Name: ", selected_row$Ocean_Name,
-        "\nReef ID: ", selected_row$Reef_ID,
-        "\nEcoregion: ", selected_row$Ecoregion_Name,
-        "\nCountry: ", selected_row$Country_Name,
-        "\nLatitude: ", selected_row$Latitude_Degrees,
-        "\nLongitude: ", selected_row$Longitude_Degrees,
-        "\nPercent Bleaching: ", selected_row$Percent_Bleaching,
-        "\nTemperature (Kelvin): ", selected_row$Temperature_Kelvin
-        # Add other columns as needed
-      )
-      return(selected_info)
-    }
+    selected_row <- coral[coral$Site_Name == click$id, ]
+    selected_row$Site_Name  # Output the Site Name
   })
+  
+  output$ocean_name_output <- renderText({
+    req(input$map_marker_click)
+    click <- input$map_marker_click
+    selected_row <- coral[coral$Site_Name == click$id, ]
+    selected_row$Ocean_Name  # Output the Ocean Name
+  })
+  
+  output$percent_bleaching_output <- renderText({
+    req(input$map_marker_click)
+    click <- input$map_marker_click
+    selected_row <- coral[coral$Site_Name == click$id, ]
+    selected_row$Percent_Bleaching  # Output the Percent Bleaching
+  })
+  # Add similar renderText functions for other pieces of information
 }
+
+  
 
 
 

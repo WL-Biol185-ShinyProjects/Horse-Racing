@@ -96,11 +96,37 @@ droppy6 <- fluidPage(
 
 mappy1 <- fluidPage(
   box(
-    title = "Locations for Data Collected", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
-    leafletOutput("map", height = 1000),
-  verbatimTextOutput("location_info")
+    title = "Locations for Data Collected",
+    status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
+    leafletOutput("map", height = 500)
+  ),
+  fluidRow(
+    column(
+      width = 4,
+      box(
+        title = "Site Name",
+        verbatimTextOutput("site_name_output")
+      )
+    ),
+    column(
+      width = 4,
+      box(
+        title = "Ocean Name",
+        verbatimTextOutput("ocean_name_output")
+      )
+    ),
+    column(
+      width = 4,
+      box(
+        title = "Percent Bleaching",
+        verbatimTextOutput("percent_bleaching_output")
+      )
+    )
+    # Add more columns and boxes for other pieces of information as needed
   )
 )
+
+
 
 # textbox <- fluidPage(
 #   p("Here we will put an introduction for our website.")
