@@ -165,18 +165,6 @@ function(input, output) {
         addMarkers(~Longitude_Degrees, ~Latitude_Degrees, popup = ~Site_Name)
     })
     
-    output$site_name_output <- renderText({
-      get_selected_info("Site_Name")
-    })
-    
-    output$ocean_name_output <- renderText({
-      get_selected_info("Ocean_Name")
-    })
-    
-    output$percent_bleaching_output <- renderText({
-      get_selected_info("Percent_Bleaching")
-    })
-  
     
 }
 
