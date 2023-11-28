@@ -10,6 +10,7 @@ library(shinydashboard)
 
 
 droppy1 <- fluidPage(
+  titlePanel("How Have Oceans Changed Over Time?"),
   fluidRow(
     column(width = 4,
       box(title = "Ocean", status = "warning", solidHeader = TRUE, width = 12,
@@ -19,7 +20,7 @@ droppy1 <- fluidPage(
       helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
       )
     ),
-    column( width= 8,
+    column(width= 8,
             box(title = "Sea Surface Temperature by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean", height = 500),
             hr(),
             helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
@@ -39,40 +40,39 @@ droppy1 <- fluidPage(
 )
 
 
-
 droppy3 <- fluidPage(
-  
-  box(title = "Ecoregion", status = "warning", solidHeader = TRUE, width = 4,
-      selectInput("Ecoregion_Name", "Ecoregion:",
+  titlePanel("How Have Ecoregions Changed Over Time?"),
+  fluidRow(
+    column(width = 4,
+           box(title = "Ecoregion", status = "warning", solidHeader = TRUE, width = 12,
+          selectInput("Ecoregion_Name", "Ecoregion:",
                   choices = unique(coral$Ecoregion_Name)),
-      hr(),
-      helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
-    ),
-    
-  box(title = "Sea Surface Temperature (kelvin) by Ecoregion", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Temperature_Mean1", height = 500),
+          hr(),
+          helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
+           )
+           ),
+    column(width= 8,
+  box(title = "Sea Surface Temperature (kelvin) by Ecoregion", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean1", height = 500),
   hr(),
   helpText("This plot displays the sea surface temperature variation over time for the selected ecoregion.")
-      ),
+      )
     )
+),
 
-droppy4 <- fluidPage(
-  box(title = "Ecoregion", status = "warning", solidHeader = TRUE, background = NULL, width = 4,
-      selectInput("Ecoregion_Name1", "Ecoregion:",
-                  choices = unique(coral$Ecoregion_Name)),
-      hr(),
-      helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
-  ),
-  
-  
-  box(title = "Percent Bleaching by Ecoregion", status = "primary", solidHeader = TRUE, background = NULL, width = 8, plotOutput("Percent_Bleaching1", height = 500),
-  hr(),
-  helpText("This plot shows the percentage of bleaching over time for the selected ecoregion.")
-      ),
+fluidRow(
+  column(width = 4),
+  column(width = 8,
+         box(title = "Percent Bleaching by Ecoregion", status = "primary", solidHeader = TRUE, background = NULL, width = 12, plotOutput("Percent_Bleaching1", height = 500),
+             hr(),
+             helpText("This plot shows the percentage of bleaching over time for the selected ecoregion.")
+         )
+        )
+        )
 )
 
 
-
 droppy5 <- fluidPage(
+  titlePanel("How Have Countries' Coral Reefs Changed Over Time?"),
   box(
     title = "Temperature Mean by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 8, 
     plotOutput("Temperature_Mean2", height = 750),
@@ -89,8 +89,8 @@ droppy5 <- fluidPage(
 )
 
 
-
 droppy6 <- fluidPage(
+  titlePanel("Density?"),
   box(
   title = "Zoomable Density Plot of Percent Bleaching", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
     plotlyOutput("zoomableDensityPlot"),
@@ -100,6 +100,7 @@ droppy6 <- fluidPage(
 )
 
 mappy1 <- fluidPage(
+  titlePanel("How Have Oceans Changed Over Time?"),
   box(
     title = "Locations for Data Collected",
     status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
@@ -159,7 +160,6 @@ body <- dashboardBody(
     tabItem(tabName = "Home", textbox),
     tabItem(tabName = "SeaSurfaceTemperaturebyOcean", droppy1),
     tabItem(tabName = "SeaSurfaceTemperaturebyEcoregion", droppy3),
-    tabItem(tabName = "PercentBleachingbyEcoregion", droppy4),
     tabItem(tabName = "TemperatureMeanbyCountry", droppy5),
     tabItem(tabName = "densityPlot", droppy6),
     tabItem(tabName = "map", mappy1)
@@ -170,15 +170,16 @@ body <- dashboardBody(
 dashboardPage(skin = "purple",
               dashboardHeader(title = "Coral"),
               dashboardSidebar(
-                sidebarMenu("Contents",
+                sidebarMenu(style = "white-space: normal;",
+                            "Contents",
                             menuItem("Home", tabName = "Home", icon = icon("house")),
-                            menuItem("SeaSurfaceTemperaturebyOcean", tabName = "SeaSurfaceTemperaturebyOcean", icon = icon("temperature-three-quarters")),    
+                            menuItem("Ocean Temperatures & Coral Bleaching", tabName = "SeaSurfaceTemperaturebyOcean", icon = icon("water")),    
                             #menuItem("PercentBleachingbyOcean", tabName = "PercentBleachingbyOcean", icon = icon("droplet")),
-                            menuItem("SeaSurfaceTemperaturebyEcoregion", tabName = "SeaSurfaceTemperaturebyEcoregion", icon = icon("droplet")),
-                            menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet")),
-                            menuItem("TemperatureMeanbyCountry", tabName = "TemperatureMeanbyCountry", icon = icon("droplet")),
-                            menuItem("DensityPlot", tabName = "densityPlot", icon = icon("droplet")),
-                            menuItem("Map", tabName = "map", icon = icon("droplet"))
+                            menuItem("Ecoregion Sea Temperatures & Coral Bleaching", tabName = "SeaSurfaceTemperaturebyEcoregion", icon = icon("earth-americas")),
+                            #menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet")),
+                            menuItem("Countries' Sea Surface Temperature Means", tabName = "TemperatureMeanbyCountry", icon = icon("temperature-three-quarters")),
+                            menuItem("Density Plot", tabName = "densityPlot", icon = icon("droplet")),
+                            menuItem("Map of Data Collected", tabName = "map", icon = icon("map"))
                             
                 )
               ),

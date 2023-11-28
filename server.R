@@ -100,7 +100,7 @@ function(input, output) {
   
   output$Percent_Bleaching1 <- renderPlot({
     plot_data <- Coral_Ordered2 %>%
-      filter(Ecoregion_Name == input$Ecoregion_Name1)
+      filter(Ecoregion_Name == input$Ecoregion_Name)
     
     if (nrow(plot_data) == 0) {
       return(NULL)  # Return NULL if data is empty
