@@ -21,7 +21,7 @@ droppy1 <- fluidPage(
       )
     ),
     column(width= 8,
-            box(title = "Sea Surface Temperature by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean", height = 500),
+            box(title = "Sea Surface Temperature (Kelvin) by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean", height = 500),
             hr(),
             helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
       )
@@ -52,7 +52,7 @@ droppy3 <- fluidPage(
            )
            ),
     column(width= 8,
-  box(title = "Sea Surface Temperature (kelvin) by Ecoregion", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean1", height = 500),
+  box(title = "Sea Surface Temperature (Kelvin) by Ecoregion", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean1", height = 500),
   hr(),
   helpText("This plot displays the sea surface temperature variation over time for the selected ecoregion.")
       )
@@ -74,7 +74,7 @@ fluidRow(
 droppy5 <- fluidPage(
   titlePanel("How Have Countries' Coral Reefs Changed Over Time?"),
   box(
-    title = "Temperature Mean by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 8, 
+    title = "Temperature Mean (Celsius) by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 8, 
     plotOutput("Temperature_Mean2", height = 750),
     hr(),
     helpText("This plot displays the mean temperature by country for the selected year.")
