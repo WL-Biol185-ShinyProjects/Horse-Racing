@@ -89,17 +89,27 @@ droppy6 <- fluidPage(
   box(
   title = "Zoomable Density Plot of Percent Bleaching", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
     plotlyOutput("zoomableDensityPlot"),
-    helpText("This plot represents the density distribution of percent bleaching over different years with zooming capabilities.")
-  )
+  ),
+  helpText("This plot represents the density distribution of percent bleaching over different years with zooming capabilities.")
+  
 )
 
-mappy1 <- fluidPage(
-  box(
-    title = "Locations for Data Collected",
-    status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
-    leafletOutput("map", height = 500)
-  )
-)
+# mappy1 <- fluidPage(
+#   box(
+#     title = "Locations for Data Collected",
+#     status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
+#     leafletOutput("map", height = 500)
+#   ),
+#   fluidRow(
+#     column(width = 6,
+#            h4("Selected Site Information"),
+#            textOutput("ocean_name_output"),
+#            textOutput("percent_bleaching_output"),
+#            textOutput("percent_cover_output"),
+#            textOutput("turbidity_output")
+#     )
+#   )
+# )
 
 
 
@@ -153,8 +163,8 @@ body <- dashboardBody(
     tabItem(tabName = "SeaSurfaceTemperaturebyEcoregion", droppy3),
     tabItem(tabName = "PercentBleachingbyEcoregion", droppy4),
     tabItem(tabName = "TemperatureMeanbyCountry", droppy5),
-    tabItem(tabName = "densityPlot", droppy6),
-    tabItem(tabName = "map", mappy1)
+    tabItem(tabName = "densityPlot", droppy6)
+    # tabItem(tabName = "map", mappy1)
     
   )
 )
@@ -169,8 +179,8 @@ dashboardPage(skin = "purple",
                             menuItem("SeaSurfaceTemperaturebyEcoregion", tabName = "SeaSurfaceTemperaturebyEcoregion", icon = icon("droplet")),
                             menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet")),
                             menuItem("TemperatureMeanbyCountry", tabName = "TemperatureMeanbyCountry", icon = icon("droplet")),
-                            menuItem("DensityPlot", tabName = "densityPlot", icon = icon("droplet")),
-                            menuItem("Map", tabName = "map", icon = icon("droplet"))
+                            menuItem("DensityPlot", tabName = "densityPlot", icon = icon("droplet"))
+                            # menuItem("Map", tabName = "map", icon = icon("droplet"))
                             
                 )
               ),

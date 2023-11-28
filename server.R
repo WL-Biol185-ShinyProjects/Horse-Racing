@@ -146,25 +146,48 @@ function(input, output) {
  
   #MAP HERE
     #why aren't the boxes populating
-    get_selected_info <- function(selected_column) {
-      req(input$map_marker_click)
-      click <- input$map_marker_click
-      selected_row <- coral[coral$Site_Name == click$id, ]
-      selected_row[[selected_column]]
-    }
-    
-    output$map <- renderLeaflet({
-      # Filter data to get the most recent data for each site
-      most_recent_data <- coral %>%
-        group_by(Site_Name) %>%
-        filter(Date_Year == max(Date_Year)) %>%
-        distinct(Site_Name, .keep_all = TRUE)
-      
-      leaflet(data = most_recent_data) %>%
-        addTiles() %>%
-        addMarkers(~Longitude_Degrees, ~Latitude_Degrees, popup = ~Site_Name)
-    })
-    
+
+    # output$map <- renderLeaflet({
+    #   leaflet(data = coral) %>%
+    #     addTiles() %>%
+    #     addMarkers(~Longitude_Degrees, ~Latitude_Degrees, popup = ~Site_Name)
+    # })
+    # 
+    # get_selected_info <- reactive({
+    #   req(input$map_marker_click)
+    #   click <- input$map_marker_click
+    #   selected_row <- coral[coral$Site_Name == click$id, ]
+    #   selected_row
+    # })
+    # 
+    # output$ocean_name_output <- renderText({
+    #   selected_info <- get_selected_info()
+    #   if (!is.null(selected_info)) {
+    #     selected_info$Ocean_Name
+    #   }
+    # })
+    # 
+    # output$percent_bleaching_output <- renderText({
+    #   selected_info <- get_selected_info()
+    #   if (!is.null(selected_info)) {
+    #     paste("Percent Bleaching: ", selected_info$Percent_Bleaching, "%")
+    #   }
+    # })
+    # 
+    # output$percent_cover_output <- renderText({
+    #   selected_info <- get_selected_info()
+    #   if (!is.null(selected_info)) {
+    #     paste("Percent Cover: ", selected_info$Percent_Cover, "%")
+    #   }
+    # })
+    # 
+    # output$turbidity_output <- renderText({
+    #   selected_info <- get_selected_info()
+    #   if (!is.null(selected_info)) {
+    #     paste("Turbidity: ", selected_info$Turbidity)
+    #   }
+    # })
+    # 
     
 }
 
