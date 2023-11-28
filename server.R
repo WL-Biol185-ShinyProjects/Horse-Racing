@@ -144,39 +144,40 @@ function(input, output) {
     })
   
  
-  #MAP HERE ABBY
-  
-  output$map <- renderLeaflet({
+  #MAP HERE
+    #why aren't the boxes populating
+    get_selected_info <- function(selected_column) {
+      req(input$map_marker_click)
+      click <- input$map_marker_click
+      selected_row <- coral[coral$Site_Name == click$id, ]
+      selected_row[[selected_column]]
+    }
     
-    unique_sites <- coral %>% 
-      distinct(Site_Name, .keep_all = TRUE)  # Keep only the first occurrence of each unique Site_Name
+    output$map <- renderLeaflet({
+      # Filter data to get the most recent data for each site
+      most_recent_data <- coral %>%
+        group_by(Site_Name) %>%
+        filter(Date_Year == max(Date_Year)) %>%
+        distinct(Site_Name, .keep_all = TRUE)
+      
+      leaflet(data = most_recent_data) %>%
+        addTiles() %>%
+        addMarkers(~Longitude_Degrees, ~Latitude_Degrees, popup = ~Site_Name)
+    })
     
-    leaflet(data = unique_sites) %>%
-      addTiles() %>%
-      addMarkers(~Longitude_Degrees, ~Latitude_Degrees, popup = ~Site_Name)
-  })
+    output$site_name_output <- renderText({
+      get_selected_info("Site_Name")
+    })
     
-  output$site_name_output <- renderText({
-    req(input$map_marker_click)
-    click <- input$map_marker_click
-    selected_row <- coral[coral$Site_Name == click$id, ]
-    selected_row$Site_Name  # Output the Site Name
-  })
+    output$ocean_name_output <- renderText({
+      get_selected_info("Ocean_Name")
+    })
+    
+    output$percent_bleaching_output <- renderText({
+      get_selected_info("Percent_Bleaching")
+    })
   
-  output$ocean_name_output <- renderText({
-    req(input$map_marker_click)
-    click <- input$map_marker_click
-    selected_row <- coral[coral$Site_Name == click$id, ]
-    selected_row$Ocean_Name  # Output the Ocean Name
-  })
-  
-  output$percent_bleaching_output <- renderText({
-    req(input$map_marker_click)
-    click <- input$map_marker_click
-    selected_row <- coral[coral$Site_Name == click$id, ]
-    selected_row$Percent_Bleaching  # Output the Percent Bleaching
-  })
-  # Add similar renderText functions for other pieces of information
+    
 }
 
   
