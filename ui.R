@@ -12,7 +12,7 @@ library(shinydashboard)
 droppy1 <- fluidPage(
   fluidRow(
     column(width = 4,
-      box(title = "Ocean", status = "warning", solidHeader = TRUE, width = 4,
+      box(title = "Ocean", status = "warning", solidHeader = TRUE, width = 12,
       selectInput("Ocean_Name", "Ocean:",
                   choices = unique(coral$Ocean_Name)),
       hr(),
@@ -20,19 +20,21 @@ droppy1 <- fluidPage(
       )
     ),
     column( width= 8,
-            box(title = "Sea Surface Temperature by Ocean", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Temperature_Mean", height = 500)
-  ),
-  helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
-  )
+            box(title = "Sea Surface Temperature by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean", height = 500),
+            hr(),
+            helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
+      )
+     )
   ),
   
   fluidRow(
     column(width = 4),
     column(width = 8,
-           box(title = "Percent Bleaching by Ocean", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Percent_Bleaching", height = 500)
-  ),
-  helpText("This plot shows the percentage of bleaching over time for the selected ocean.")
-)
+           box(title = "Percent Bleaching by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Percent_Bleaching", height = 500),
+          hr(),
+          helpText("This plot shows the percentage of bleaching over time for the selected ocean.")
+      )
+    )
   )
 )
 
@@ -47,9 +49,10 @@ droppy3 <- fluidPage(
       helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
     ),
     
-  box(title = "Sea Surface Temperature (kelvin) by Ecoregion", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Temperature_Mean1", height = 500)
-  ),
+  box(title = "Sea Surface Temperature (kelvin) by Ecoregion", status = "primary", solidHeader = TRUE, width = 8, plotOutput("Temperature_Mean1", height = 500),
+  hr(),
   helpText("This plot displays the sea surface temperature variation over time for the selected ecoregion.")
+      ),
     )
 
 droppy4 <- fluidPage(
@@ -61,9 +64,10 @@ droppy4 <- fluidPage(
   ),
   
   
-  box(title = "Percent Bleaching by Ecoregion", status = "primary", solidHeader = TRUE, background = NULL, width = 8, plotOutput("Percent_Bleaching1", height = 500)
-  ),
+  box(title = "Percent Bleaching by Ecoregion", status = "primary", solidHeader = TRUE, background = NULL, width = 8, plotOutput("Percent_Bleaching1", height = 500),
+  hr(),
   helpText("This plot shows the percentage of bleaching over time for the selected ecoregion.")
+      ),
 )
 
 
@@ -71,9 +75,10 @@ droppy4 <- fluidPage(
 droppy5 <- fluidPage(
   box(
     title = "Temperature Mean by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 8, 
-    plotOutput("Temperature_Mean2", height = 750)
+    plotOutput("Temperature_Mean2", height = 750),
+    hr(),
+    helpText("This plot displays the mean temperature by country for the selected year.")
   ),
-  helpText("This plot displays the mean temperature by country for the selected year."),
   box(
     title = "Year", status = "warning", solidHeader = TRUE, width = 4,
     sliderInput("Date_Year", "Year:",
@@ -89,6 +94,7 @@ droppy6 <- fluidPage(
   box(
   title = "Zoomable Density Plot of Percent Bleaching", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
     plotlyOutput("zoomableDensityPlot"),
+    hr(),
     helpText("This plot represents the density distribution of percent bleaching over different years with zooming capabilities.")
   )
 )
@@ -97,7 +103,9 @@ mappy1 <- fluidPage(
   box(
     title = "Locations for Data Collected",
     status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
-    leafletOutput("map", height = 500)
+    leafletOutput("map", height = 500),
+    hr(),
+    helpText("This map allows you to see...")
   )
 )
 
