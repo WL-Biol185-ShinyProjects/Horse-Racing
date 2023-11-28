@@ -158,7 +158,7 @@ references <- fluidPage(
       tags$figure(
         class = "centerFigure",
         tags$img(
-          src = "underwater.jpg",
+          src = "https://rstudioworkbench.wlu.edu/s/eba9e8dedfcdd6550f943/files/Horse-Racing/underwater.JPEG",
           width = 600,
           alt = "Picture of Pari, Estelle, and Abby"
         )
