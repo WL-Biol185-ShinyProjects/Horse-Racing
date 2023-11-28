@@ -117,14 +117,11 @@ mappy1 <- fluidPage(
 # )
 
 textbox <- fluidPage(
-  titlePanel("Welcome to the Coral Reefs Dashboard"),
-  #sidebarLayout(
-  #sidebarPanel(width = 3, ""),
-  mainPanel(
+  titlePanel("Welcome to the Coral Reefs Dashboard!"),
     fluidRow(
       column(
         width = 12,
-        tags$img(src = "https://upload.wikimedia.org/wikipedia/commons/a/a4/Coral-banner.jpg", width = "75%")
+        tags$img(src = "https://upload.wikimedia.org/wikipedia/commons/a/a4/Coral-banner.jpg", width = "100%")
       )
     ),
     fluidRow(
@@ -152,8 +149,36 @@ textbox <- fluidPage(
       )
     )
   )
-)
 
+references <- fluidPage(
+  titlePanel("References"),
+  fluidRow(
+    column(
+      width = 12,
+      tags$figure(
+        class = "centerFigure",
+        tags$img(
+          src = "underwater.jpg",
+          width = 600,
+          alt = "Picture of Pari, Estelle, and Abby"
+        )
+      )
+    )
+        ),
+  
+      fluidRow(
+        column(
+          width = 12,
+      box(
+        title = "References",
+        status = "primary", 
+        solidHeader = TRUE,
+        width = 12,
+        p("Works Cited... I would like to put an option to download the data file here")
+      )
+    )
+  )
+)
 
 body <- dashboardBody(
   tabItems(
@@ -162,13 +187,15 @@ body <- dashboardBody(
     tabItem(tabName = "SeaSurfaceTemperaturebyEcoregion", droppy3),
     tabItem(tabName = "TemperatureMeanbyCountry", droppy5),
     tabItem(tabName = "densityPlot", droppy6),
-    tabItem(tabName = "map", mappy1)
+    tabItem(tabName = "map", mappy1),
+    tabItem(tabName = "references", references)
     
   )
 )
 
 dashboardPage(skin = "purple",
-              dashboardHeader(title = "Coral"),
+              dashboardHeader(title = "Coral Reefs Dashboard",
+                              titleWidth = 250),
               dashboardSidebar(
                 sidebarMenu(style = "white-space: normal;",
                             "Contents",
@@ -179,7 +206,8 @@ dashboardPage(skin = "purple",
                             #menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet")),
                             menuItem("Countries' Sea Surface Temperature Means", tabName = "TemperatureMeanbyCountry", icon = icon("temperature-three-quarters")),
                             menuItem("Density Plot", tabName = "densityPlot", icon = icon("droplet")),
-                            menuItem("Map of Data Collected", tabName = "map", icon = icon("map"))
+                            menuItem("Map of Data Collected", tabName = "map", icon = icon("map")),
+                            menuItem("References", tabName = "references", icon = icon("clock-rotate-left"))
                             
                 )
               ),
