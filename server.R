@@ -1,6 +1,8 @@
 library(shiny)
 library(tidyverse)
 
+#pushthis
+
 coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
 Coral_Ordered1 <- coral %>% group_by(Country_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
