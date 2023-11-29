@@ -1,5 +1,6 @@
 library(shiny)
 library(tidyverse)
+library(dplyr)
 
 coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
@@ -151,7 +152,7 @@ function(input, output) {
     # Filter data to get the most recent data for each site
     most_recent_data <- coral %>%
       group_by(Site_Name) %>%
-      filter(Date_Year == max(Date_Year)) %>%
+      slice_max(Date_Year) %>%
       distinct(Site_Name, .keep_all = TRUE)
     
     leaflet(data = most_recent_data) %>%
