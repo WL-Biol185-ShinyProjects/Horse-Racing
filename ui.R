@@ -21,7 +21,7 @@ droppy1 <- fluidPage(
            )
     ),
     column(width= 8,
-           box(title = "Sea Surface Temperature (Kelvin) by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean", height = 500),
+           box(title = "Sea Surface Temperature (Celsius) by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean", height = 500),
                hr(),
                helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
            )
@@ -52,7 +52,7 @@ droppy3 <- fluidPage(
            )
     ),
     column(width= 8,
-           box(title = "Sea Surface Temperature (Kelvin) by Ecoregion", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean1", height = 500),
+           box(title = "Sea Surface Temperature (Celsius) by Ecoregion", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean1", height = 500),
                hr(),
                helpText("This plot displays the sea surface temperature variation over time for the selected ecoregion.")
            )
