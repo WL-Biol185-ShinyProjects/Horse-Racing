@@ -82,7 +82,7 @@ droppy5 <- fluidPage(
   ),
   box(
     title = "Year", status = "warning", solidHeader = TRUE, width = 4,
-    sliderInput("Date_Year", "Year:",
+    sliderInput("Date_Year", "Year:", sep = "",
                 min = 1980, max = 2020, value = 2000, step =NULL
     )
     
