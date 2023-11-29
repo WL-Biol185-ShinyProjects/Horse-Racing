@@ -161,12 +161,17 @@ references <- fluidPage(
   fluidRow(
     column(
       width = 12,
+      box(
+        status = "info",
+        solidHeader = TRUE,
+        width = 12,
       tags$figure(
         class = "centerFigure",
-        tags$img(
-          src = "https://rstudioworkbench.wlu.edu/s/eba9e8dedfcdd6550f943/files/Horse-Racing/underwater.JPEG",
+        img(
+          src = "underwater.JPEG",
           width = 600,
           alt = "Picture of Pari, Estelle, and Abby"
+        )
         )
       )
     )
