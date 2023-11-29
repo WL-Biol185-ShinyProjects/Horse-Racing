@@ -130,7 +130,7 @@ function(input, output) {
     
     Coral_Ordered1 %>%
       filter(Date_Year == input$Date_Year) %>%
-      ggplot(aes(Country_Name, aveTemp)) + geom_bar(stat = 'identity', position = "jitter") + scale_x_discrete(guide = guide_axis(angle = 90)) + NULL
+      ggplot(aes(Country_Name, aveTemp)) + geom_bar(stat = 'identity', position = "identity") + scale_x_discrete(guide = guide_axis(angle = 90)) 
   })
   
   #density1
