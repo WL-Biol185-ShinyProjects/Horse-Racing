@@ -3,6 +3,7 @@ library(tidyverse)
 library(plotly)
 library(shinydashboard)
 library(leaflet)
+library(dplyr)
 
 coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
