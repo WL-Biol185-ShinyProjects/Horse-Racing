@@ -52,7 +52,7 @@ function(input, output) {
     
     p <- ggplot(plot_data, aes(Date_Year, aveBleach)) + 
       geom_point(color = "blue") +
-      geom_smooth(method = "lm", se = FALSE, color = "red") +  # Add red regression line
+      geom_smooth(method = "lm", se = FALSE, color = "red") +  
       labs(
         title = "Percent Bleaching by Ocean",
         x = "Date Year",
@@ -81,7 +81,7 @@ function(input, output) {
     
     p <- ggplot(plot_data, aes(Date_Year, aveTemp)) +
       geom_point(color = "blue") +
-      geom_smooth(method = "lm", se = FALSE, color = "red") +  # Add red regression line
+      geom_smooth(method = "lm", se = FALSE, color = "red") +  
       
       labs(
         title = "Temperature by Ecoregion",
@@ -109,7 +109,7 @@ function(input, output) {
     p <- plot_data %>%
       ggplot(aes(Date_Year, aveBleach)) + 
       geom_point(color = "blue") +
-      geom_smooth(method = "lm", se = FALSE, color = "red") +  # Add red regression line
+      geom_smooth(method = "lm", se = FALSE, color = "red") +  
       labs(
         title = "Percent Bleaching by Ecoregion",
         x = "Date Year",
@@ -146,12 +146,6 @@ function(input, output) {
   
   #MAP HERE
   #why aren't the boxes populating
-  get_selected_info <- function(selected_column) {
-    req(input$map_marker_click)
-    click <- input$map_marker_click
-    selected_row <- coral[coral$Site_Name == click$id, ]
-    selected_row[[selected_column]]
-  }
   
   output$map <- renderLeaflet({
     # Filter data to get the most recent data for each site
