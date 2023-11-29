@@ -226,12 +226,12 @@ references <- fluidPage(
 body <- dashboardBody(
   tabItems(
     tabItem(tabName = "Home", textbox),
+    tabItem(tabName = "map", mappy1),
     tabItem(tabName = "SeaSurfaceTemperaturebyOcean", droppy1),
     tabItem(tabName = "SeaSurfaceTemperaturebyEcoregion", droppy3),
     tabItem(tabName = "TemperatureMeanbyCountry", droppy5),
     tabItem(tabName = "densityPlot", droppy6),
     tabItem(tabName = "Regression", droppy7),
-    tabItem(tabName = "map", mappy1),
     tabItem(tabName = "references", references)
     
   )
@@ -244,6 +244,7 @@ dashboardPage(skin = "purple",
                 sidebarMenu(style = "white-space: normal;",
                             "Contents",
                             menuItem("Home", tabName = "Home", icon = icon("house")),
+                            menuItem("Map of Data Collected", tabName = "map", icon = icon("map")),
                             menuItem("Ocean Temperatures & Coral Bleaching", tabName = "SeaSurfaceTemperaturebyOcean", icon = icon("water")),    
                             #menuItem("PercentBleachingbyOcean", tabName = "PercentBleachingbyOcean", icon = icon("droplet")),
                             menuItem("Ecoregion Sea Temperatures & Coral Bleaching", tabName = "SeaSurfaceTemperaturebyEcoregion", icon = icon("earth-americas")),
@@ -251,7 +252,6 @@ dashboardPage(skin = "purple",
                             menuItem("Countries' Sea Surface Temperature Means", tabName = "TemperatureMeanbyCountry", icon = icon("temperature-three-quarters")),
                             menuItem("Density Plot", tabName = "densityPlot", icon = icon("droplet")),
                             menuItem("Regression", tabName = "Regression", icon = icon("water")),
-                            menuItem("Map of Data Collected", tabName = "map", icon = icon("map")),
                             menuItem("References", tabName = "references", icon = icon("clock-rotate-left"))
                             
                 )
