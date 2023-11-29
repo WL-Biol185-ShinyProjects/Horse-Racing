@@ -1,13 +1,15 @@
 library(shiny)
 library(tidyverse)
 
+#pushthis
+
 coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
-Coral_Ordered1 <- coral %>% mutate(across(.cols = starts_with('Temperature_Mean'),.fns = function(x) x - 273.15)) %>% group_by(Country_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE)) 
+Coral_Ordered1 <- coral %>% group_by(Country_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
 Coral_Ordered2 <- coral %>% group_by(Ecoregion_Name, Date_Year) %>% summarise(aveBleach = mean(Percent_Bleaching, na.rm = TRUE))
-Coral_Ordered3 <- coral %>% group_by(Ocean_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
+Coral_Ordered3 <- coral %>% mutate(across(.cols = starts_with('Temperature_Mean'),.fns = function(x) x - 273.15)) %>% group_by(Ocean_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
 Coral_Ordered4 <- coral %>% group_by(Ocean_Name, Date_Year) %>% summarise(aveBleach = mean(Percent_Bleaching, na.rm = TRUE))
-Coral_Ordered5 <- coral %>% group_by(Ecoregion_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
+Coral_Ordered5 <- coral %>% mutate(across(.cols = starts_with('Temperature_Mean'),.fns = function(x) x - 273.15)) %>% group_by(Ecoregion_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE))
 
 function(input, output) {
   
@@ -100,7 +102,7 @@ function(input, output) {
   
   output$Percent_Bleaching1 <- renderPlot({
     plot_data <- Coral_Ordered2 %>%
-      filter(Ecoregion_Name == input$Ecoregion_Name)
+      filter(Ecoregion_Name == input$Ecoregion_Name1)
     
     if (nrow(plot_data) == 0) {
       return(NULL)  # Return NULL if data is empty
@@ -146,25 +148,48 @@ function(input, output) {
  
   #MAP HERE
     #why aren't the boxes populating
-    get_selected_info <- function(selected_column) {
-      req(input$map_marker_click)
-      click <- input$map_marker_click
-      selected_row <- coral[coral$Site_Name == click$id, ]
-      selected_row[[selected_column]]
-    }
-    
-    output$map <- renderLeaflet({
-      # Filter data to get the most recent data for each site
-      most_recent_data <- coral %>%
-        group_by(Site_Name) %>%
-        filter(Date_Year == max(Date_Year)) %>%
-        distinct(Site_Name, .keep_all = TRUE)
-      
-      leaflet(data = most_recent_data) %>%
-        addTiles() %>%
-        addMarkers(~Longitude_Degrees, ~Latitude_Degrees, popup = ~Site_Name)
-    })
-    
+
+    # output$map <- renderLeaflet({
+    #   leaflet(data = coral) %>%
+    #     addTiles() %>%
+    #     addMarkers(~Longitude_Degrees, ~Latitude_Degrees, popup = ~Site_Name)
+    # })
+    # 
+    # get_selected_info <- reactive({
+    #   req(input$map_marker_click)
+    #   click <- input$map_marker_click
+    #   selected_row <- coral[coral$Site_Name == click$id, ]
+    #   selected_row
+    # })
+    # 
+    # output$ocean_name_output <- renderText({
+    #   selected_info <- get_selected_info()
+    #   if (!is.null(selected_info)) {
+    #     selected_info$Ocean_Name
+    #   }
+    # })
+    # 
+    # output$percent_bleaching_output <- renderText({
+    #   selected_info <- get_selected_info()
+    #   if (!is.null(selected_info)) {
+    #     paste("Percent Bleaching: ", selected_info$Percent_Bleaching, "%")
+    #   }
+    # })
+    # 
+    # output$percent_cover_output <- renderText({
+    #   selected_info <- get_selected_info()
+    #   if (!is.null(selected_info)) {
+    #     paste("Percent Cover: ", selected_info$Percent_Cover, "%")
+    #   }
+    # })
+    # 
+    # output$turbidity_output <- renderText({
+    #   selected_info <- get_selected_info()
+    #   if (!is.null(selected_info)) {
+    #     paste("Turbidity: ", selected_info$Turbidity)
+    #   }
+    # })
+    # 
     
 }
 
