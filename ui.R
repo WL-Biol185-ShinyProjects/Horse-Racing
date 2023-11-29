@@ -196,12 +196,12 @@ references <- fluidPage(
       box(
         status = "info",
         solidHeader = TRUE,
-        width = 12,
+        width = 6,
       tags$figure(
         class = "centerFigure",
         img(
           src = "underwater.JPEG",
-          width = 800,
+          width = "100%",
           alt = "Picture of Pari, Estelle, and Abby"
         )
         )
