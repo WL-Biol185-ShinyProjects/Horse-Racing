@@ -157,7 +157,7 @@ textbox <- fluidPage(
       box(
         status = "info",
         solidHeader = TRUE,
-        width = 12,
+        width = 6,
         tags$img(src = "https://upload.wikimedia.org/wikipedia/commons/a/a4/Coral-banner.jpg", align = "center", width = "100%")
       )
     )
