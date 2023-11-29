@@ -107,9 +107,28 @@ mappy1 <- fluidPage(
     status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
     leafletOutput("map", height = 500),
     hr(),
-    helpText("This map allows you to see...")
+    textOutput("site_info_Site_Name"),
+    textOutput("site_info_Ocean_Name"),
+    textOutput("site_info_Ecoregion_Name"),
+    textOutput("site_info_Distance_to_Shore"),
+    textOutput("site_info_Exposure"),
+    textOutput("site_info_Turbidity"),
+    textOutput("site_info_Cyclone_Frequency"),
+    textOutput("site_info_Date_Day"),
+    textOutput("site_info_Date_Month"),
+    textOutput("site_info_Date_Year"),
+    textOutput("site_info_Dsepth_m"),
+    textOutput("site_info_Substrate_Name"),
+    textOutput("site_info_Percent_Bleaching"),
+    textOutput("site_info_Temperature_Kelvin"),
+    textOutput("site_info_Windspeed"),
+    textOutput("site_info_Site_Comments"),
+    textOutput("site_info_Sample_Comments"),
+    textOutput("site_info_Bleaching_Comments")
+    
   )
 )
+
 
 
 
