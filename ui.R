@@ -201,7 +201,7 @@ references <- fluidPage(
         class = "centerFigure",
         img(
           src = "underwater.JPEG",
-          width = 600,
+          width = 800,
           alt = "Picture of Pari, Estelle, and Abby"
         )
         )
