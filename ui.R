@@ -100,6 +100,19 @@ droppy6 <- fluidPage(
   )
 )
 
+
+droppy7 <- fluidPage(
+  titlePanel("Regression?"),
+  fluidRow(
+    column(width= 8,
+           box(title = "Temp vs. Bleaching", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Regression", height = 500),
+               hr(),
+               helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
+           )
+)
+)
+)
+
 mappy1 <- fluidPage(
   titlePanel("How Have Oceans Changed Over Time?"),
   box(
@@ -107,9 +120,28 @@ mappy1 <- fluidPage(
     status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
     leafletOutput("map", height = 500),
     hr(),
-    helpText("This map allows you to see...")
+    textOutput("site_info_Site_Name"),
+    textOutput("site_info_Ocean_Name"),
+    textOutput("site_info_Ecoregion_Name"),
+    textOutput("site_info_Distance_to_Shore"),
+    textOutput("site_info_Exposure"),
+    textOutput("site_info_Turbidity"),
+    textOutput("site_info_Cyclone_Frequency"),
+    textOutput("site_info_Date_Day"),
+    textOutput("site_info_Date_Month"),
+    textOutput("site_info_Date_Year"),
+    textOutput("site_info_Dsepth_m"),
+    textOutput("site_info_Substrate_Name"),
+    textOutput("site_info_Percent_Bleaching"),
+    textOutput("site_info_Temperature_Kelvin"),
+    textOutput("site_info_Windspeed"),
+    textOutput("site_info_Site_Comments"),
+    textOutput("site_info_Sample_Comments"),
+    textOutput("site_info_Bleaching_Comments")
+    
   )
 )
+
 
 
 
@@ -198,6 +230,7 @@ body <- dashboardBody(
     tabItem(tabName = "SeaSurfaceTemperaturebyEcoregion", droppy3),
     tabItem(tabName = "TemperatureMeanbyCountry", droppy5),
     tabItem(tabName = "densityPlot", droppy6),
+    tabItem(tabName = "Regression", droppy7),
     tabItem(tabName = "map", mappy1),
     tabItem(tabName = "references", references)
     
@@ -217,6 +250,7 @@ dashboardPage(skin = "purple",
                             #menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet")),
                             menuItem("Countries' Sea Surface Temperature Means", tabName = "TemperatureMeanbyCountry", icon = icon("temperature-three-quarters")),
                             menuItem("Density Plot", tabName = "densityPlot", icon = icon("droplet")),
+                            menuItem("Regression", tabName = "Regression", icon = icon("water")),
                             menuItem("Map of Data Collected", tabName = "map", icon = icon("map")),
                             menuItem("References", tabName = "references", icon = icon("clock-rotate-left"))
                             

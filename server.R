@@ -1,6 +1,5 @@
 library(shiny)
 library(tidyverse)
-library(dplyr)
 
 coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
@@ -136,6 +135,16 @@ function(input, output) {
       ggplot(aes(Country_Name, aveTemp)) + geom_bar(stat = 'identity', position = "identity") + scale_x_discrete(guide = guide_axis(angle = 90)) 
   })
   
+  #droppy7
+  
+  output$Regression <- renderPlot({
+    
+    Coral_Ordered6 %>%
+      ggplot(aes(x = aveTemp, y = aveBleach)) + geom_point(aes(colour = as.factor(Date_Year)))
+  })
+  
+  
+  
   #density1
   
   output$zoomableDensityPlot <- renderPlotly({
@@ -150,11 +159,17 @@ function(input, output) {
   #MAP HERE
   #why aren't the boxes populating
   
+  get_selected_info <- reactive({
+    req(input$map_marker_click)
+    click <- input$map_marker_click
+    selected_row <- coral[coral$Site_Name == click$id, ]
+    selected_row
+  })
+  
   output$map <- renderLeaflet({
-    # Filter data to get the most recent data for each site
     most_recent_data <- coral %>%
       group_by(Site_Name) %>%
-      slice_max(Date_Year) %>%
+      filter(Date_Year == max(Date_Year)) %>%
       distinct(Site_Name, .keep_all = TRUE)
     
     leaflet(data = most_recent_data) %>%
@@ -162,6 +177,168 @@ function(input, output) {
       addMarkers(~Longitude_Degrees, ~Latitude_Degrees, popup = ~Site_Name)
   })
   
+  
+  output$site_info_Site_Name <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Site_Name
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Ocean_Name <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Ocean_Name
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Ecoregion_Name <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Ecoregion_Name
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Distance_to_Shore <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Distance_to_Shore
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Exposure <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Exposure
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Turbidity <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Turbidity
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Cyclone_Frequency <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Cyclone_Frequency
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Date_Day <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Date_Day
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Date_Month <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Date_Month
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Date_Year <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Date_Year
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Depth_m <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Depth_m
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Substrate_Name <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Substrate_Name
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Percent_Bleaching <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Percent_Bleaching
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Temperature_Kelvin <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Temperature_Kelvin
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Windspeed <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Windspeed
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Site_Comments <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Site_Comments
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Sample_Comments <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Sample_Comments
+    } else {
+      "No data available"
+    }
+  })
+  
+  output$site_info_Bleaching_Comments <- renderText({
+    selected_info <- get_selected_info()
+    if (!is.null(selected_info) && nrow(selected_info) > 0) {
+      selected_info$Bleaching_Comments
+    } else {
+      "No data available"
+    }
+  })
   
 }
 
