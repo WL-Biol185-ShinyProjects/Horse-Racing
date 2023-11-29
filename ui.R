@@ -100,6 +100,19 @@ droppy6 <- fluidPage(
   )
 )
 
+
+droppy7 <- fluidPage(
+  titlePanel("Regression?"),
+  fluidRow(
+    column(width= 8,
+           box(title = "Temp vs. Bleaching", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Regression", height = 500),
+               hr(),
+               helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
+           )
+)
+)
+)
+
 mappy1 <- fluidPage(
   titlePanel("How Have Oceans Changed Over Time?"),
   box(
@@ -193,6 +206,7 @@ body <- dashboardBody(
     tabItem(tabName = "SeaSurfaceTemperaturebyEcoregion", droppy3),
     tabItem(tabName = "TemperatureMeanbyCountry", droppy5),
     tabItem(tabName = "densityPlot", droppy6),
+    tabItem(tabName = "Regression", droppy7),
     tabItem(tabName = "map", mappy1),
     tabItem(tabName = "references", references)
     
@@ -212,6 +226,7 @@ dashboardPage(skin = "purple",
                             #menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet")),
                             menuItem("Countries' Sea Surface Temperature Means", tabName = "TemperatureMeanbyCountry", icon = icon("temperature-three-quarters")),
                             menuItem("Density Plot", tabName = "densityPlot", icon = icon("droplet")),
+                            menuItem("Regression", tabName = "Regression", icon = icon("water")),
                             menuItem("Map of Data Collected", tabName = "map", icon = icon("map")),
                             menuItem("References", tabName = "references", icon = icon("clock-rotate-left"))
                             

@@ -136,6 +136,16 @@ function(input, output) {
       ggplot(aes(Country_Name, aveTemp)) + geom_bar(stat = 'identity', position = "identity") + scale_x_discrete(guide = guide_axis(angle = 90)) 
   })
   
+  #droppy7
+  
+  output$Regression <- renderPlot({
+    
+    Coral_Ordered6 %>%
+      ggplot(aes(x = aveTemp, y = aveBleach)) + geom_point(aes(colour = as.factor(Date_Year)))
+  })
+  
+  
+  
   #density1
   
   output$zoomableDensityPlot <- renderPlotly({
