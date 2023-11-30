@@ -130,7 +130,7 @@ mappy1 <- fluidPage(
     textOutput("site_info_Date_Day"),
     textOutput("site_info_Date_Month"),
     textOutput("site_info_Date_Year"),
-    textOutput("site_info_Dsepth_m"),
+    textOutput("site_info_Depth_m"),
     textOutput("site_info_Substrate_Name"),
     textOutput("site_info_Percent_Bleaching"),
     textOutput("site_info_Temperature_Kelvin"),

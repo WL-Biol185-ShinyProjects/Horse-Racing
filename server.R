@@ -188,7 +188,8 @@ function(input, output) {
   output$site_info_Site_Name <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Site_Name
+      site_name <- selected_info$Site_Name
+      paste("Site Name:", site_name)
     } else {
       "No data available"
     }
@@ -198,7 +199,8 @@ function(input, output) {
   output$site_info_Ocean_Name <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Ocean_Name
+      oceanname <- selected_info$Ocean_Name
+      paste("Ocean Name:", oceanname)
     } else {
       "No data available"
     }
@@ -207,7 +209,8 @@ function(input, output) {
   output$site_info_Ecoregion_Name <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Ecoregion_Name
+      ecoregionname <- selected_info$Ecoregion_Name
+      paste("Ecoregion Name:", ecoregionname)
     } else {
       "No data available"
     }
@@ -216,7 +219,8 @@ function(input, output) {
   output$site_info_Distance_to_Shore <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Distance_to_Shore
+      disttoshore <- selected_info$Distance_to_Shore
+      paste("Distance To Shore:", disttoshore)
     } else {
       "No data available"
     }
@@ -225,7 +229,8 @@ function(input, output) {
   output$site_info_Exposure <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Exposure
+      exp <- selected_info$Exposure
+      paste("Exposure:", exp)
     } else {
       "No data available"
     }
@@ -234,7 +239,8 @@ function(input, output) {
   output$site_info_Turbidity <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Turbidity
+      turb <- selected_info$Turbidity
+      paste("Turbidity:", turb)
     } else {
       "No data available"
     }
@@ -243,7 +249,8 @@ function(input, output) {
   output$site_info_Cyclone_Frequency <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Cyclone_Frequency
+      cycl <- selected_info$Cyclone_Frequency
+      paste("Cyclone Frequency:", cycl)
     } else {
       "No data available"
     }
@@ -252,7 +259,8 @@ function(input, output) {
   output$site_info_Date_Day <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Date_Day
+      dateday <- selected_info$Date_Day
+      paste("Day of Data Collection:", dateday)
     } else {
       "No data available"
     }
@@ -261,7 +269,8 @@ function(input, output) {
   output$site_info_Date_Month <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Date_Month
+      month <- selected_info$Date_Month
+      paste("Month of Data Collection:", month)
     } else {
       "No data available"
     }
@@ -270,7 +279,8 @@ function(input, output) {
   output$site_info_Date_Year <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Date_Year
+      yr <- selected_info$Date_Year
+      paste("Year of Data Collection:", yr)
     } else {
       "No data available"
     }
@@ -279,7 +289,8 @@ function(input, output) {
   output$site_info_Depth_m <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Depth_m
+      depth <- selected_info$Depth_m
+      paste("Depth (m):", depth)
     } else {
       "No data available"
     }
@@ -288,7 +299,8 @@ function(input, output) {
   output$site_info_Substrate_Name <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Substrate_Name
+      subst <- selected_info$Substrate_Name
+      paste("Substrate Name:", subst)
     } else {
       "No data available"
     }
@@ -297,7 +309,8 @@ function(input, output) {
   output$site_info_Percent_Bleaching <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Percent_Bleaching
+      percbl <- selected_info$Percent_Bleaching
+      paste("Percent Bleaching:", percbl)
     } else {
       "No data available"
     }
@@ -306,7 +319,9 @@ function(input, output) {
   output$site_info_Temperature_Kelvin <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Temperature_Kelvin
+      tempK <- selected_info$Temperature_Kelvin
+      tempC <- tempK - 273.15
+      paste("Temperature (C):", tempC)
     } else {
       "No data available"
     }
@@ -315,7 +330,8 @@ function(input, output) {
   output$site_info_Windspeed <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Windspeed
+      windsp <- selected_info$Windspeed
+      paste("Windspeed:", windsp)
     } else {
       "No data available"
     }
@@ -324,7 +340,8 @@ function(input, output) {
   output$site_info_Site_Comments <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Site_Comments
+      sitecomments <- selected_info$Site_Comments
+      paste("Site Comments:", sitecomments)
     } else {
       "No data available"
     }
@@ -333,7 +350,8 @@ function(input, output) {
   output$site_info_Sample_Comments <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Sample_Comments
+      samplecomm <- selected_info$Sample_Comments
+      paste("Sample Comments:", samplecomm)
     } else {
       "No data available"
     }
@@ -342,14 +360,12 @@ function(input, output) {
   output$site_info_Bleaching_Comments <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
-      selected_info$Bleaching_Comments
+      bleachcomm <- selected_info$Bleaching_Comments
+      paste("Bleaching Comments:", bleachcomm)
     } else {
       "No data available"
     }
   })
   
 }
-
-
-
 
