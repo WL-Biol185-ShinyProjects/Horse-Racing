@@ -156,15 +156,23 @@ function(input, output) {
   })
   
   
-  #MAP HERE
-  #why aren't the boxes populating
+  #MAP 
   
   get_selected_info <- reactive({
     req(input$map_marker_click)
+    
     click <- input$map_marker_click
-    selected_row <- coral[coral$Site_Name == click$id, ]
-    selected_row
+    print(click)  
+    if (is.null(click))
+      return(NULL)
+    
+    lat <- click$lat
+    lng <- click$lng
+    
+    nearest_site <- coral[which.min((coral$Latitude_Degrees - lat)^2 + (coral$Longitude_Degrees - lng)^2), ]
+    nearest_site
   })
+
   
   output$map <- renderLeaflet({
     most_recent_data <- coral %>%
@@ -177,7 +185,6 @@ function(input, output) {
       addMarkers(~Longitude_Degrees, ~Latitude_Degrees, popup = ~Site_Name)
   })
   
-  
   output$site_info_Site_Name <- renderText({
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
@@ -186,6 +193,7 @@ function(input, output) {
       "No data available"
     }
   })
+  
   
   output$site_info_Ocean_Name <- renderText({
     selected_info <- get_selected_info()
