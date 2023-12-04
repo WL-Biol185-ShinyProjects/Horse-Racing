@@ -9,6 +9,11 @@ coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
 library(shinydashboard)
 
+##add in the boxes on the first 2 pages that the predicted relationship of positive r squared values for temp AND bleaching
+##did not hold true, which could be due to confounding variables OR it could mean that a linear relationship may not 
+##adequately describe the association between these variables. It's possible that the relationship is 
+##nonlinear, or other factors might be more influential in explaining variations in bleaching aside from temperature alone.
+##so we created a separate regression plot isolating temp and bleaching to see if we could find a relationship (GETTING TO THAT L8R)
 
 droppy1 <- fluidPage(
   titlePanel("How Have Oceans Changed Over Time?"),
