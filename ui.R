@@ -115,14 +115,21 @@ droppy5 <- fluidPage(
   
 droppy6 <- fluidPage(
   titlePanel("Density?"),
+  fluidRow(
   box(
     title = "Zoomable Density Plot of Percent Bleaching", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
     plotlyOutput("zoomableDensityPlot"),
     hr(),
     helpText("This plot represents the density distribution of percent bleaching over different years with zooming capabilities.")
+    )
+  ),
+  fluidRow(
+    box(
+      title = "Major Insights", status = "danger", solidHeader = TRUE, collapsible = TRUE, width = 12,
+      p("DENSITYYYY")
+    )
   )
 )
-
 
 droppy7 <- fluidPage(
   titlePanel("Regression?"),
@@ -132,7 +139,13 @@ droppy7 <- fluidPage(
                hr(),
                helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
            )
-)
+          ),
+    column(width = 4,
+      box(
+        title = "Major Insights", status = "danger", solidHeader = TRUE, collapsible = TRUE, width = 12,
+        p("REGRESSSIOOOOOON")
+      )
+    )
 )
 )
 
