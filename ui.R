@@ -143,7 +143,7 @@ droppy7 <- fluidPage(
     column(width = 4,
       box(
         title = "Major Insights", status = "danger", solidHeader = TRUE, collapsible = TRUE, width = 12,
-        p("REGRESSSIOOOOOON")
+        p("REGRESSSIOOOON")
       )
     )
 )
@@ -240,7 +240,7 @@ references <- fluidPage(
           alt = "Picture of Pari, Estelle, and Abby"
         )
         )
-      )
+      ),
     )
   ),
   
@@ -252,7 +252,7 @@ references <- fluidPage(
         status = "primary", 
         solidHeader = TRUE,
         width = 12,
-        p("Works Cited... I would like to put an option to download the data file here")
+        DT::dataTableOutput("mytable")
       )
     )
   )

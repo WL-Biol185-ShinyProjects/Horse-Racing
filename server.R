@@ -167,6 +167,11 @@ function(input, output) {
              dragmode = "zoom")  # Enable zoom only
   })
   
+  #references
+  
+  output$mytable <- DT::renderDataTable(coral,
+                                        options = list(scrollX = TRUE),
+                                        rownames = FALSE)
   
   #MAP 
   
