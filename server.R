@@ -137,11 +137,23 @@ function(input, output) {
   
   #droppy7
   
+  # output$Regression <- renderPlot({
+  #   
+  #   Coral_Ordered6 %>%
+  #     ggplot(aes(x = aveTemp, y = aveBleach)) + geom_point(aes(colour = as.factor(Date_Year)))
+  # })
+  
   output$Regression <- renderPlot({
-    
-    Coral_Ordered6 %>%
-      ggplot(aes(x = aveTemp, y = aveBleach)) + geom_point(aes(colour = as.factor(Date_Year)))
+    ggplot(Coral_Ordered6, aes(x = aveTemp, y = aveBleach, color = as.factor(Date_Year))) +
+      geom_point() +
+      geom_smooth(method = "lm", se = FALSE) +
+      labs(
+        title = "Temperature vs. Bleaching",
+        x = "Average Temperature",
+        y = "Average Bleaching"
+      )
   })
+  
   
   
   
