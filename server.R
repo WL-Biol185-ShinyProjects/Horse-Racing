@@ -137,24 +137,35 @@ function(input, output) {
   
   #droppy7
   
+  ##This is with 40 lines
   # output$Regression <- renderPlot({
-  #   
-  #   Coral_Ordered6 %>%
-  #     ggplot(aes(x = aveTemp, y = aveBleach)) + geom_point(aes(colour = as.factor(Date_Year)))
+  #   ggplot(Coral_Ordered6, aes(x = aveTemp, y = aveBleach, color = as.factor(Date_Year))) +
+  #     geom_point() +
+  #     geom_smooth(method = "lm", se = FALSE) +
+  #     labs(
+  #       title = "Temperature vs. Bleaching",
+  #       x = "Average Temperature",
+  #       y = "Average Bleaching"
+  #     )
   # })
   
-  output$Regression <- renderPlot({
-    ggplot(Coral_Ordered6, aes(x = aveTemp, y = aveBleach, color = as.factor(Date_Year))) +
-      geom_point() +
-      geom_smooth(method = "lm", se = FALSE) +
-      labs(
-        title = "Temperature vs. Bleaching",
-        x = "Average Temperature",
-        y = "Average Bleaching"
-      )
-  })
-  
-  
+    output$Regression <- renderPlot({
+      selected_year <- input$selected_year
+      
+      # Filter the data based on the selected year for the regression line
+      filtered_data <- subset(Coral_Ordered6, Date_Year == selected_year)
+      
+      # Plotting all scatter plot points
+      ggplot(Coral_Ordered6, aes(x = aveTemp, y = aveBleach, color = as.factor(Date_Year))) +
+        geom_point() +
+        geom_smooth(data = filtered_data, aes(color = as.factor(Date_Year)),
+                    method = "lm", se = FALSE) +
+        labs(
+          title = "Temperature vs. Bleaching",
+          x = "Average Temperature",
+          y = "Average Bleaching"
+        )
+    })
   
   
   #density1
