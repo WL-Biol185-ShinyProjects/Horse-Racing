@@ -7,6 +7,9 @@ library(dplyr)
 
 coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
+Coral_Ordered6 <- coral %>% mutate(across(.cols = starts_with('Temperature_Mean'),.fns = function(x) x - 273.15)) %>% group_by(Country_Name, Date_Year) %>% summarise(aveTemp = mean(Temperature_Mean, na.rm = TRUE), aveBleach = mean(Percent_Bleaching, na.rm = TRUE)) 
+
+
 library(shinydashboard)
 
 ##add in the boxes on the first 2 pages that the predicted relationship of positive r squared values for temp AND bleaching
@@ -131,23 +134,52 @@ droppy6 <- fluidPage(
   )
 )
 
+# droppy7 <- fluidPage(
+#   titlePanel("Regression?"),
+#   fluidRow(
+#     column(width= 8,
+#            box(title = "Temp vs. Bleaching", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Regression", height = 500),
+#                hr(),
+#                helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
+#            )
+#           ),
+#     column(width = 4,
+#       box(
+#         title = "Major Insights", status = "danger", solidHeader = TRUE, collapsible = TRUE, width = 12,
+#         p("REGRESSSIOOOOOON")
+#       )
+#     )
+# )
+# )
+
 droppy7 <- fluidPage(
   titlePanel("Regression?"),
   fluidRow(
-    column(width= 8,
-           box(title = "Temp vs. Bleaching", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Regression", height = 500),
-               hr(),
-               helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
+    column(width = 8,
+           box(
+             title = "Temp vs. Bleaching",
+             status = "primary",
+             solidHeader = TRUE,
+             width = 12,
+             selectInput("selected_year", "Select Year", choices = unique(Coral_Ordered6$Date_Year)),
+             plotOutput("Regression", height = 500),
+             hr(),
+             helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
            )
-          ),
+    ),
     column(width = 4,
-      box(
-        title = "Major Insights", status = "danger", solidHeader = TRUE, collapsible = TRUE, width = 12,
-        p("REGRESSSIOOOON")
-      )
+           box(
+             title = "Major Insights",
+             status = "danger",
+             solidHeader = TRUE,
+             collapsible = TRUE,
+             width = 12,
+             p("REGRESSSIOOOOOON")
+           )
     )
+  )
 )
-)
+
 
 mappy1 <- fluidPage(
   titlePanel("How Have Oceans Changed Over Time?"),
@@ -240,7 +272,7 @@ references <- fluidPage(
           alt = "Picture of Pari, Estelle, and Abby"
         )
         )
-      ),
+      )
     )
   ),
   
@@ -252,7 +284,7 @@ references <- fluidPage(
         status = "primary", 
         solidHeader = TRUE,
         width = 12,
-        DT::dataTableOutput("mytable")
+        p("Works Cited... I would like to put an option to download the data file here")
       )
     )
   )
