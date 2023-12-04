@@ -146,7 +146,7 @@ mappy1 <- fluidPage(
 
 
 # textbox <- fluidPage(
-#   p("Here we will put an introduction for our website.")
+#   p("This dashboard provides insights into coral reef assessments using data collected from reefs around the world. The data is from an NSF-funded project in 2021 called “Identifying coral reef ‘bright spots’ from the global 2015-2017 thermal stress event” primarily investigated by researchers from Florida Institute of Technology. Most species of coral have suffered up to 98% mortality over the past 4 decades and are projected to continue to decline as the effects of global climate change such as temperature, ocean acidification, and severe weather events continue to increase in intensity and frequency. This website allows users to interact with various components of the effects of global climate change felt by coral reefs across the world, from the relationships between temperature to percentage of bleaching in relation to time, and much more using over 42,000 pieces of data collected from hundreds of sites around the world over the past 40 years, allowing for comparative analyses and determination of geographical bleaching thresholds and sea surface temperature based on location of the data collected.")
 # )
 
 textbox <- fluidPage(
@@ -170,7 +170,7 @@ textbox <- fluidPage(
         status = "primary", 
         solidHeader = TRUE,
         width = 12,
-        p("This dashboard provides insights into ocean temperatures, coral bleaching, and more...")
+        p("This dashboard provides insights into coral reef assessments using data collected from reefs around the world. The data is from an NSF-funded project in 2021 called “Identifying coral reef ‘bright spots’ from the global 2015-2017 thermal stress event” primarily investigated by researchers from Florida Institute of Technology. Most species of coral have suffered up to 98% mortality over the past 4 decades and are projected to continue to decline as the effects of global climate change such as temperature, ocean acidification, and severe weather events continue to increase in intensity and frequency. This website allows users to interact with various components of the effects of global climate change felt by coral reefs across the world, from the relationships between temperature to percentage of bleaching in relation to time, and much more using over 42,000 pieces of data collected from hundreds of sites around the world over the past 40 years, allowing for comparative analyses and determination of geographical bleaching thresholds and sea surface temperature based on location of the data collected.")
       )
     )
   ),
