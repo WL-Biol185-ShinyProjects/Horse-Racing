@@ -178,7 +178,6 @@ function(input, output) {
              dragmode = "zoom")  # Enable zoom only
   })
   
-<<<<<<< HEAD
   #references
   
   output$mytable <- DT::renderDataTable(coral,
@@ -187,8 +186,7 @@ function(input, output) {
                                                        dom = 'Bfrtip'),
                                         extensions = 'Buttons',
                                         rownames = FALSE)
-=======
->>>>>>> c52e9d74888f9a1174782dab89da6c6c70694acc
+
   
   #MAP 
   

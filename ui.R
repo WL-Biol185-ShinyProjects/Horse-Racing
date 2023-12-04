@@ -284,7 +284,7 @@ references <- fluidPage(
         status = "primary", 
         solidHeader = TRUE,
         width = 12,
-        p("Works Cited... I would like to put an option to download the data file here")
+        DT::dataTableOutput("mytable")
       )
     )
   )
