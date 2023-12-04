@@ -170,7 +170,10 @@ function(input, output) {
   #references
   
   output$mytable <- DT::renderDataTable(coral,
-                                        options = list(scrollX = TRUE),
+                                        options = list(scrollX = TRUE,
+                                                       buttons = c('csv', 'excel'),
+                                                       dom = 'Bfrtip'),
+                                        extensions = 'Buttons',
                                         rownames = FALSE)
   
   #MAP 
