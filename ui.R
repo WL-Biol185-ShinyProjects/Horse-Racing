@@ -19,6 +19,9 @@ droppy1 <- fluidPage(
                            choices = unique(coral$Ocean_Name)),
                hr(),
                helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
+           ),
+           box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
+               p("Oceans...")
            )
     ),
     column(width= 8,
@@ -46,10 +49,13 @@ droppy3 <- fluidPage(
   fluidRow(
     column(width = 4,
            box(title = "Ecoregion", status = "warning", solidHeader = TRUE, width = 12,
-               selectInput("Ecoregion_Name", "Ecoregion:",
+               selectInput("Ecoregion_Name", "Select an Ecoregion:",
                            choices = unique(coral$Ecoregion_Name)),
                hr(),
                helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
+           ),
+           box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
+               p("Bright Spots and Refugium...")
            )
     ),
     column(width= 8,
@@ -74,22 +80,34 @@ droppy3 <- fluidPage(
 
 droppy5 <- fluidPage(
   titlePanel("How Have Countries' Coral Reefs Changed Over Time?"),
-  box(
-    title = "Temperature Mean (Celsius) by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 8, 
-    plotOutput("Temperature_Mean2", height = 750),
-    hr(),
-    helpText("This plot displays the mean temperature by country for the selected year.")
-  ),
-  box(
-    title = "Year", status = "warning", solidHeader = TRUE, width = 4,
-    sliderInput("Date_Year", "Year:", sep = "",
-                min = 1980, max = 2020, value = 2000, step =NULL
+  fluidRow(
+    column(width =8,
+      box(
+        title = "Temperature Mean (Celsius) by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12, 
+        plotOutput("Temperature_Mean2", height = 750),
+        hr(),
+        helpText("This plot displays the mean temperature by country for the selected year.")
+      ),
+    column(width = 4,
+      box(
+        title = "Year", status = "warning", solidHeader = TRUE, width = 12,
+        sliderInput("Date_Year", "Year:", sep = "",
+                    min = 1980, max = 2020, value = 2000, step =NULL
+                    )
+          ),
+  fluidRow(
+    column(width = 8),
+    column(width = 4,
+      box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
+        p("Countries...")
+              )
+            )
+          )
+        )
+      )
     )
-    
   )
-)
-
-
+  
 droppy6 <- fluidPage(
   titlePanel("Density?"),
   box(
@@ -139,6 +157,9 @@ mappy1 <- fluidPage(
     textOutput("site_info_Sample_Comments"),
     textOutput("site_info_Bleaching_Comments")
     
+  ),
+  box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
+      p("Data...")
   )
 )
 
