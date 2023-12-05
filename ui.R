@@ -219,15 +219,25 @@ textbox <- fluidPage(
   titlePanel("Welcome to the Coral Reefs Dashboard!"),
   fluidRow(
     column(
-      width = 12,
+      width = 8,
       box(
         status = "info",
         solidHeader = TRUE,
-        width = 6,
+        width = 12,
         tags$img(src = "https://upload.wikimedia.org/wikipedia/commons/a/a4/Coral-banner.jpg", align = "center", width = "100%")
       )
     )
   ),
+  
+  fluidRow(
+           column(
+             width = 12,
+             valueBox(10 * 4200, "Data Points", color = "green", icon = icon("square-poll-vertical")),
+             valueBox(10 * 50, "Sites", color = "yellow", icon = icon("location-dot")),
+             valueBox(10 * 4, "Years of Research", color = "red", icon = icon("microscope"))
+           )
+           ),
+
   fluidRow(
     column(
       width = 12,
