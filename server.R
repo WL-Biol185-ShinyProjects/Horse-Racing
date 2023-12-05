@@ -252,7 +252,7 @@ function(input, output) {
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
       disttoshore <- selected_info$Distance_to_Shore
-      paste("Distance To Shore:", disttoshore)
+      paste("Distance To Shore (m):", disttoshore)
     } else {
       "No data available"
     }
@@ -272,7 +272,7 @@ function(input, output) {
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
       turb <- selected_info$Turbidity
-      paste("Turbidity:", turb)
+      paste("Turbidity (m^-1):", turb)
     } else {
       "No data available"
     }
@@ -363,7 +363,7 @@ function(input, output) {
     selected_info <- get_selected_info()
     if (!is.null(selected_info) && nrow(selected_info) > 0) {
       windsp <- selected_info$Windspeed
-      paste("Windspeed:", windsp)
+      paste("Windspeed (meters per hour):", windsp)
     } else {
       "No data available"
     }

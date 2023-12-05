@@ -66,7 +66,9 @@ droppy3 <- fluidPage(
                helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
            ),
            box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
-               p("Bright Spots and Refugium...")
+               p("Anywhere we see a positively correlated relationship between the regression line on the sea surface temperature plot and the regression line on the percent bleaching plot where both slopes are negative indicates the potential location of a “bright spot”.  Bright spots are anomalies from the global perspective, an ecosystem that doesn’t match global trends. For example, looking at Cuba and Cayman Islands, there is an inverse relationship between SST and percent bleaching - there is an overall decline in temperature and increase in bleaching. We know as educated global citizens that the Earth’s temperature has continued to increase, but for whatever reason, this ecoregion is an exception to that trend.  However, we see that percent bleaching is increasing, indicating confounding or unaccounted-for variables (in this analysis) could also drive the increase, not necessarily just SST."),
+               #p(""),
+               p("Costa Rica and the Panama Pacific Coast is an example of a bright spot, where both temperature and percent bleaching decrease (while global trends increase).")
            )
     ),
     column(width= 8,
@@ -209,8 +211,8 @@ mappy1 <- fluidPage(
     textOutput("site_info_Bleaching_Comments")
     
   ),
-  box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
-      p("Data...")
+  box(title = "What am I looking at?", status = "danger", solidHeader = TRUE, width = 12,
+      p("The raw data gathered from each individual site! Click a flag to learn the corresponding information, including distance to shore, exposure, turbidity, and substrate types!")
   )
 )
 
