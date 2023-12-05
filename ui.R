@@ -19,6 +19,7 @@ library(shinydashboard)
 ##nonlinear, or other factors might be more influential in explaining variations in bleaching aside from temperature alone.
 ##so we created a separate regression plot isolating temp and bleaching to see if we could find a relationship (GETTING TO THAT L8R)
 
+
 droppy1 <- fluidPage(
   theme = shinytheme("flatly"),
   titlePanel("How Have Oceans Changed Over Time?"),
@@ -168,12 +169,12 @@ droppy7 <- fluidPage(
     ),
     column(width = 4,
            box(
-             title = "Major Insights",
+             title = "Dare we call it a refugium?",
              status = "danger",
              solidHeader = TRUE,
              collapsible = TRUE,
              width = 12,
-             p("REGRESSSIOOOOOON")
+             p("We hypothesized that when plotting sea surface temperature by ocean and percent bleaching by ocean, both plots would yield a positive r squared value and positively sloped line. Similarly, we predicted a positive r squared value and positive sloped line for SST grouped by ecoregion and percent bleaching by ecoregion. However, for the majority of those plots, our hypothesis did not hold true, so we decided to run a regression to see if there was a relationship between SST and percent bleaching directly. Our findings, as displayed on this graph, are very interesting. As you can see, some years have a significant relationship, showing causality and holding our hypothesis that as temperatures increase, bleaching will increase, true. However, others have a negatively sloped line, implying there was not a causality.  This demonstrates an ecosystem that is a bright spot, (dare we call it a refugium?), or a place where the coral reefs are thriving despite global trends suggesting otherwise.")
            )
     )
   )
