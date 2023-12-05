@@ -4,6 +4,7 @@ library(plotly)
 library(shinydashboard)
 library(leaflet)
 library(dplyr)
+library(shinythemes)
 
 coral <- read.csv("global_bleaching_environmental.csv", na.strings = "nd")
 
@@ -19,6 +20,7 @@ library(shinydashboard)
 ##so we created a separate regression plot isolating temp and bleaching to see if we could find a relationship (GETTING TO THAT L8R)
 
 droppy1 <- fluidPage(
+  theme = shinytheme("flatly"),
   titlePanel("How Have Oceans Changed Over Time?"),
   fluidRow(
     column(width = 4,
