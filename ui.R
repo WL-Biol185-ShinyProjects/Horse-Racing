@@ -89,35 +89,32 @@ droppy3 <- fluidPage(
 droppy5 <- fluidPage(
   titlePanel("How Have Countries' Coral Reefs Changed Over Time?"),
   fluidRow(
-    column(width =8,
-      box(
-        title = "Temperature Mean (Celsius) by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12, 
-        plotOutput("Temperature_Mean2", height = 750),
-        hr(),
-        helpText("This plot displays the mean temperature by country for the selected year.")
-      ),
-    column(width = 4,
-      box(
-        title = "Year", status = "warning", solidHeader = TRUE, width = 12,
-        sliderInput("Date_Year", "Year:", sep = "",
-                    min = 1980, max = 2020, value = 2000, step =NULL
-                    )
-          ),
-  fluidRow(
-    column(width = 8),
-    column(width = 4,
-      box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
-        p("Countries...")
-              )
-            )
-          )
-        )
-      )
+    column(width =4,
+           box(
+             title = "Year", status = "warning", solidHeader = TRUE, width = 12,
+             sliderInput("Date_Year", "Year:", sep = "",
+                         min = 1980, max = 2020, value = 2000, step =NULL
+             )
+           ),
+           box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
+               p("Countries...")
+           )
+    ),
+    
+    column(width = 8,
+           box(
+             title = "Temperature Mean (Celsius) by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12, 
+             plotOutput("Temperature_Mean2", height = 500),
+             hr(),
+             helpText("This plot displays the mean temperature by country for the selected year.")
+           )
     )
   )
+)
+
   
 droppy6 <- fluidPage(
-  titlePanel("Density?"),
+  titlePanel("Is there an Underlying Probability Distrubtion of Percent Bleaching Data?"),
   fluidRow(
   box(
     title = "Zoomable Density Plot of Percent Bleaching", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
@@ -153,7 +150,7 @@ droppy6 <- fluidPage(
 # )
 
 droppy7 <- fluidPage(
-  titlePanel("Regression?"),
+  titlePanel("Is There a Relationship Between Sea Surface Temperature and Percent Bleaching?"),
   fluidRow(
     column(width = 8,
            box(
@@ -182,7 +179,7 @@ droppy7 <- fluidPage(
 
 
 mappy1 <- fluidPage(
-  titlePanel("How Have Oceans Changed Over Time?"),
+  titlePanel("Where Was The Data Collected From?"),
   box(
     title = "Locations for Data Collected",
     status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
@@ -318,7 +315,7 @@ dashboardPage(skin = "purple",
                             #menuItem("PercentBleachingbyEcoregion", tabName = "PercentBleachingbyEcoregion", icon = icon("droplet")),
                             menuItem("Countries' Sea Surface Temperature Means", tabName = "TemperatureMeanbyCountry", icon = icon("temperature-three-quarters")),
                             menuItem("Density Plot", tabName = "densityPlot", icon = icon("droplet")),
-                            menuItem("Regression", tabName = "Regression", icon = icon("water")),
+                            menuItem("Regression", tabName = "Regression", icon = icon("magnifying-glass-chart")),
                             menuItem("References", tabName = "references", icon = icon("clock-rotate-left"))
                             
                 )
