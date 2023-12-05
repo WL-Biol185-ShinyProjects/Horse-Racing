@@ -214,7 +214,24 @@ function(input, output) {
     
     leaflet(data = most_recent_data) %>%
       addTiles() %>%
-      addMarkers(~Longitude_Degrees, ~Latitude_Degrees, popup = ~Site_Name)
+      addMarkers(
+        ~Longitude_Degrees,
+        ~Latitude_Degrees, 
+        popup = ~Site_Name,
+        clusterOptions = markerClusterOptions())
+      #   ) %>%
+      # 
+      # addAwesomeMarkers(
+      #   ~Longitude_Degrees,
+      #   ~Latitude_Degrees,
+      #   icon = awesomeIcons(
+      #     icon = 'star',
+      #     markerColor = 'blue',
+      #     library = 'fa',
+      #     iconColor = 'black'
+      #   ),
+      #   popup = ~Site_Name
+      # )
   })
   
   output$site_info_Site_Name <- renderText({
