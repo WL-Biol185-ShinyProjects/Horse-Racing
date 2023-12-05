@@ -181,12 +181,12 @@ function(input, output) {
   #references
   
   output$mytable <- DT::renderDataTable(coral,
-                                        options = list(scrollX = TRUE,
-                                                       buttons = c('csv', 'excel'),
-                                                       dom = 'Bfrtip'),
                                         extensions = 'Buttons',
+                                        options = list(scrollX = TRUE,
+                                                       dom = 'Bfrtip',
+                                                       buttons = list(list(extend = 'csv', filename= 'coral'))),
                                         rownames = FALSE)
-
+                                
   
   #MAP 
   
