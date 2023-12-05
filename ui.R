@@ -219,7 +219,8 @@ textbox <- fluidPage(
   titlePanel("Welcome to the Coral Reefs Dashboard!"),
   fluidRow(
     column(
-      width = 8,
+      width = 10,
+      offset = 1,
       box(
         status = "info",
         solidHeader = TRUE,
@@ -268,11 +269,12 @@ references <- fluidPage(
   titlePanel("References"),
   fluidRow(
     column(
-      width = 12,
+      width = 6,
       box(
+        title = "Meet The App Creators",
         status = "info",
         solidHeader = TRUE,
-        width = 6,
+        width = 12,
       tags$figure(
         class = "centerFigure",
         img(
@@ -282,8 +284,18 @@ references <- fluidPage(
         )
         )
       )
-    )
-  ),
+    ),
+    column(
+      width = 6,
+      box(
+        title = "About Us",
+        status = "danger",
+        solidHeader = TRUE,
+        width = 12,
+        p("Pari, Estelle, and Abby!")
+      )
+      )
+    ),
   
   fluidRow(
     column(
