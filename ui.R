@@ -117,7 +117,7 @@ droppy5 <- fluidPage(
 
   
 droppy6 <- fluidPage(
-  titlePanel("Is there an Underlying Probability Distrubtion of Percent Bleaching Data?"),
+  titlePanel("Is there an Underlying Probability Distribution of Percent Bleaching Data?"),
   fluidRow(
   box(
     title = "Zoomable Density Plot of Percent Bleaching", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
@@ -129,7 +129,8 @@ droppy6 <- fluidPage(
   fluidRow(
     box(
       title = "Major Insights", status = "danger", solidHeader = TRUE, collapsible = TRUE, width = 12,
-      p("DENSITYYYY")
+      p("This density plot demonstrates the distribution of percent bleaching over the past 40 years. The highest density of percent bleaching is representative of high bleaching years. There are alarming identifiable trends seen in this plot, with spikes of high density across all ranges of percent bleaching, and when the specific years in these spikes are analyzed, the highest spikes are concentrated across the past 25 years, suggesting an increase in severity of bleaching events in more recent years."),
+      p("The findings from this plot also open the door to further analysis such as running regressions to test causality of bleaching with environmental data such as pollution levels, El Nino events, etc., which could further reveal potential causality and relationships between climate change severity and the impacts felt by coral reefs.")
     )
   )
 )
