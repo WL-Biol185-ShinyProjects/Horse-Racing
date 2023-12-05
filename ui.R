@@ -13,12 +13,6 @@ Coral_Ordered6 <- coral %>% mutate(across(.cols = starts_with('Temperature_Mean'
 
 library(shinydashboard)
 
-##add in the boxes on the first 2 pages that the predicted relationship of positive r squared values for temp AND bleaching
-##did not hold true, which could be due to confounding variables OR it could mean that a linear relationship may not 
-##adequately describe the association between these variables. It's possible that the relationship is 
-##nonlinear, or other factors might be more influential in explaining variations in bleaching aside from temperature alone.
-##so we created a separate regression plot isolating temp and bleaching to see if we could find a relationship (GETTING TO THAT L8R)
-
 
 droppy1 <- fluidPage(
   theme = shinytheme("flatly"),
@@ -212,7 +206,7 @@ mappy1 <- fluidPage(
     
   ),
   box(title = "What am I looking at?", status = "danger", solidHeader = TRUE, width = 12,
-      p("The raw data gathered from each individual site! Click a flag to learn the corresponding information, including distance to shore, exposure, turbidity, and substrate types!")
+      p("The raw data gathered from each individual site! Click a cluster to zoom in and learn the corresponding information, including distance to shore, exposure, turbidity, and substrate types!")
   )
 )
 

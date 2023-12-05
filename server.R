@@ -219,19 +219,6 @@ function(input, output) {
         ~Latitude_Degrees, 
         popup = ~Site_Name,
         clusterOptions = markerClusterOptions())
-      #   ) %>%
-      # 
-      # addAwesomeMarkers(
-      #   ~Longitude_Degrees,
-      #   ~Latitude_Degrees,
-      #   icon = awesomeIcons(
-      #     icon = 'star',
-      #     markerColor = 'blue',
-      #     library = 'fa',
-      #     iconColor = 'black'
-      #   ),
-      #   popup = ~Site_Name
-      # )
   })
   
   output$site_info_Site_Name <- renderText({
