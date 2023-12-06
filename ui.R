@@ -19,7 +19,7 @@ droppy1 <- fluidPage(
   titlePanel("How Have Oceans Changed Over Time?"),
   fluidRow(
     column(width = 12,
-           box(title = "Ocean", status = "warning", solidHeader = TRUE, width = 12,
+           box(title = "Ocean", status = "warning", solidHeader = TRUE, collapsible = TRUE, width = 12,
                selectInput("Ocean_Name", "Ocean:",
                            choices = unique(coral$Ocean_Name)),
                hr(),
@@ -29,13 +29,13 @@ droppy1 <- fluidPage(
   ),
   fluidRow(
     column(width= 6,
-           box(title = "Sea Surface Temperature (Celsius) by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean", height = 500),
+           box(title = "Sea Surface Temperature (Celsius) by Ocean", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12, plotOutput("Temperature_Mean", height = 500),
                hr(),
                helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
            )
     ),
     column(width = 6,
-           box(title = "Percent Bleaching by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Percent_Bleaching", height = 500),
+           box(title = "Percent Bleaching by Ocean", status = "primary", solidHeader = TRUE, width = 12, collapsible = TRUE, plotOutput("Percent_Bleaching", height = 500),
                hr(),
                helpText("This plot shows the percentage of bleaching over time for the selected ocean.")
            )
@@ -45,7 +45,7 @@ droppy1 <- fluidPage(
   fluidRow(
     column(width= 12,
            box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
-               p("The Intergovernmental Panel on Climate Change in 2018 predicted that effectively all coral reefs would die if global warming surpassed the threshold of 2 degrees Celsius. However, predictions like this differ from recent field studies on coral reefs that show pockets where corals do not bleach and die. It is critical that we do not ignore these climate change refuges, and rather, locate them to determine what circumstances are most conducive for coral survival. These plots allow the user to clearly identify coral reef refuges. A refugium is a place, that despite thermal stress events, experience less than expected bleaching. For example, the Atlantic Ocean appears to contain refuges as while Sea Surface Temperature has increased over the past 40 years, its corals have experienced a decrease in bleaching.")
+               p("The Intergovernmental Panel on Climate Change in 2018 predicted that effectively all coral reefs would die if global warming surpassed the threshold of 2 degrees Celsius. However, predictions like this differ from recent field studies on coral reefs that show pockets where corals do not bleach and die. It is critical that we do not ignore these climate change refuges, and rather, locate them to determine what circumstances are most conducive for coral survival. These plots allow the user to clearly identify coral reef refuges. A refugium is a place, that despite thermal stress events, experiences less than expected bleaching. For example, the Atlantic Ocean appears to contain refuges as while Sea Surface Temperature has increased over the past 40 years, its corals have experienced a decrease in bleaching.")
            )
     )
   )
@@ -56,7 +56,7 @@ droppy3 <- fluidPage(
   titlePanel("How Have Ecoregions Changed Over Time?"),
   fluidRow(
     column(width = 12,
-           box(title = "Ecoregion", status = "warning", solidHeader = TRUE, width = 12,
+           box(title = "Ecoregion", status = "warning", solidHeader = TRUE, collapsible = TRUE, width = 12,
                selectInput("Ecoregion_Name", "Select an Ecoregion:",
                            choices = unique(coral$Ecoregion_Name)),
                hr(),
@@ -67,13 +67,13 @@ droppy3 <- fluidPage(
   
   fluidRow(
     column(width= 6,
-           box(title = "Sea Surface Temperature (Celsius) by Ecoregion", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean1", height = 500),
+           box(title = "Sea Surface Temperature (Celsius) by Ecoregion", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12, plotOutput("Temperature_Mean1", height = 500),
                hr(),
                helpText("This plot displays the sea surface temperature variation over time for the selected ecoregion.")
            )
     ),
     column(width = 6,
-           box(title = "Percent Bleaching by Ecoregion", status = "primary", solidHeader = TRUE, background = NULL, width = 12, plotOutput("Percent_Bleaching1", height = 500),
+           box(title = "Percent Bleaching by Ecoregion", status = "primary", solidHeader = TRUE, background = NULL, collapsible = TRUE, width = 12, plotOutput("Percent_Bleaching1", height = 500),
                hr(),
                helpText("This plot shows the percentage of bleaching over time for the selected ecoregion.")
            )
@@ -83,9 +83,7 @@ droppy3 <- fluidPage(
   fluidRow(
     column(width = 12,
            box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
-               p("Anywhere we see a positively correlated relationship between the regression line on the sea surface temperature plot and the regression line on the percent bleaching plot where both slopes are negative indicates the potential location of a “bright spot”.  Bright spots are anomalies from the global perspective, an ecosystem that doesn’t match global trends. For example, looking at Cuba and Cayman Islands, there is an inverse relationship between SST and percent bleaching - there is an overall decline in temperature and increase in bleaching. We know as educated global citizens that the Earth’s temperature has continued to increase, but for whatever reason, this ecoregion is an exception to that trend.  However, we see that percent bleaching is increasing, indicating confounding or unaccounted-for variables (in this analysis) could also drive the increase, not necessarily just SST."),
-               #p(""),
-               p("Costa Rica and the Panama Pacific Coast is an example of a bright spot, where both temperature and percent bleaching decrease (while global trends increase).")
+               p("Anywhere we see a negative slope on both the sea surface temperature plot and the percent bleaching plot indicates the potential location of a “bright spot”. Bright spots are anomalies from the global perspective, an ecosystem that doesn’t match global trends.  An example of this is the ecoregion “Netherlands Antilles and South Caribbean” where there is an overall decline in both temperature and bleaching. Identifying coral reef bright spots like this one is crucial as it could help guide future conservation efforts. For example, we could designate the bright spots as preservation sites to both protect these fragile environments from unnecessary risks such as human encroachment and to be able to study the environmental factors that contribute to their increased resistance against global climate change.")
            )
   )
 )
@@ -96,7 +94,7 @@ droppy5 <- fluidPage(
   fluidRow(
     column(width =4,
            box(
-             title = "Year", status = "warning", solidHeader = TRUE, width = 12,
+             title = "Year", status = "warning", solidHeader = TRUE, collapsible = TRUE, width = 12,
              sliderInput("Date_Year", "Year:", sep = "",
                          min = 1980, max = 2020, value = 2000, step =NULL
              )
@@ -116,7 +114,7 @@ droppy5 <- fluidPage(
   fluidRow(  
     column(width = 12,
            box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
-               p("This plot allows the user to select from the 40 years of data collected to see the average sea surface temperature (celsius) during that year for all countries sampled.")
+               p("This plot allows the user to select from the 40 years of data collected to see the average sea surface temperature, in Celsius, during that year for all countries sampled.")
     )
   )
 )
@@ -135,7 +133,7 @@ droppy6 <- fluidPage(
   ),
   fluidRow(
     box(
-      title = "Major Insights", status = "danger", solidHeader = TRUE, collapsible = TRUE, width = 12,
+      title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
       p("This density plot demonstrates the distribution of percent bleaching over the past 40 years. The highest density of percent bleaching is representative of high bleaching years. There are alarming identifiable trends seen in this plot, with spikes of high density across all ranges of percent bleaching, and when the specific years in these spikes are analyzed, the highest spikes are concentrated across the past 25 years, suggesting an increase in severity of bleaching events in more recent years."),
       p("The findings from this plot also open the door to further analysis such as running regressions to test causality of bleaching with environmental data such as pollution levels, El Nino events, etc., which could further reveal potential causality and relationships between climate change severity and the impacts felt by coral reefs.")
     )
@@ -150,6 +148,7 @@ droppy7 <- fluidPage(
            box(
              title = "Temp vs. Bleaching",
              status = "primary",
+             collapsible = TRUE,
              solidHeader = TRUE,
              width = 12,
              selectInput("selected_year", "Select Year", choices = unique(Coral_Ordered6$Date_Year)),
@@ -165,7 +164,6 @@ droppy7 <- fluidPage(
              title = "Dare We Call It A Refugium?",
              status = "danger",
              solidHeader = TRUE,
-             collapsible = TRUE,
              width = 12,
              p("We hypothesized that when plotting sea surface temperature by ocean and percent bleaching by ocean, both plots would yield a positive r squared value and positively sloped line. Similarly, we predicted a positive r squared value and positive sloped line for SST grouped by ecoregion and percent bleaching by ecoregion. However, for the majority of those plots, our hypothesis did not hold true, so we decided to run a regression to see if there was a relationship between SST and percent bleaching directly. Our findings, as displayed on this graph, are very interesting. As you can see, some years have a significant relationship, showing causality and holding our hypothesis that as temperatures increase, bleaching will increase, true. However, others have a negatively sloped line, implying there was not a causality.  This demonstrates an ecosystem that is a bright spot, (dare we call it a refugium?), or a place where the coral reefs are thriving despite global trends suggesting otherwise.")
            )
@@ -256,6 +254,7 @@ references <- fluidPage(
         title = "Meet The App Creators",
         status = "info",
         solidHeader = TRUE,
+        collapsible = TRUE,
         width = 12,
       tags$figure(
         class = "centerFigure",
@@ -273,6 +272,7 @@ references <- fluidPage(
         title = "About Us",
         status = "danger",
         solidHeader = TRUE,
+        collapsible = TRUE,
         width = 12,
         p(style = "font-weight: bold;", "Pari, Estelle, and Abby!"),
         p("Pari is a senior Biology major and MESA minor hailing from Medfield, Massachussetts. She enjoys swimming in the ocean every summer. She wants to help save the corals so the oceans can remain healthy and beautiful!"),
@@ -289,6 +289,7 @@ references <- fluidPage(
         title = "Dataset",
         status = "primary", 
         solidHeader = TRUE,
+        collapsible = TRUE,
         width = 12,
         DT::dataTableOutput("mytable")
       )
@@ -314,7 +315,8 @@ references <- fluidPage(
         status = "success",
         solidHeader = TRUE,
         width = 12,
-        p("The data we utilized were compiled from the following sources: 1) Reef Check (https://www.reefcheck.org/global-reef-tracker/), (2) Donner et al. (2017), (3) McClanahan et al. (2019), (4) AGRRA (https://www.agrra.org), (5) FRRP (https://ocean.floridamarine.org/FRRP/Home/Reports), (6) Safaie et al. (2018), and (7) Kumagai et al. (2018). Site coordinates were standardized to decimal degrees using Google Earth. Coordinates were compared to ensure a sampling event was not duplicated across multiple data sources. Points were removed if they occurred on land or were more than 1 kilometer from a coral reef. Environmental and site data were added to each site, including reef site exposure, distance to land, mean turbidity, cyclone frequency, and CoRTAD Version 6 environmental data.")
+        p("The data we utilized were compiled from the following sources: 1) Reef Check (https://www.reefcheck.org/global-reef-tracker/), (2) Donner et al. (2017), (3) McClanahan et al. (2019), (4) AGRRA (https://www.agrra.org), (5) FRRP (https://ocean.floridamarine.org/FRRP/Home/Reports), (6) Safaie et al. (2018), and (7) Kumagai et al. (2018). Site coordinates were standardized to decimal degrees using Google Earth. Coordinates were compared to ensure a sampling event was not duplicated across multiple data sources. Points were removed if they occurred on land or were more than 1 kilometer from a coral reef. Environmental and site data were added to each site, including reef site exposure, distance to land, mean turbidity, cyclone frequency, and CoRTAD Version 6 environmental data."),
+        p("Check out this link to see the complete Biological & Chemical Oceanography Data Management Office's project: https://www.bco-dmo.org/project/762952")
     )
   )
 )
