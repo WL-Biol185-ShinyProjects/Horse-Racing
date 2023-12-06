@@ -135,20 +135,7 @@ function(input, output) {
       ggplot(aes(Country_Name, aveTemp)) + geom_bar(stat = 'identity', position = "identity") + scale_x_discrete(guide = guide_axis(angle = 90)) 
   })
   
-  #droppy7
-  
-  ##This is with 40 lines
-  # output$Regression <- renderPlot({
-  #   ggplot(Coral_Ordered6, aes(x = aveTemp, y = aveBleach, color = as.factor(Date_Year))) +
-  #     geom_point() +
-  #     geom_smooth(method = "lm", se = FALSE) +
-  #     labs(
-  #       title = "Temperature vs. Bleaching",
-  #       x = "Average Temperature",
-  #       y = "Average Bleaching"
-  #     )
-  # })
-  
+
     output$Regression <- renderPlot({
       selected_year <- input$selected_year
       
