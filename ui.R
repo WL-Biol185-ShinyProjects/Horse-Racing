@@ -201,7 +201,7 @@ mappy1 <- fluidPage(
     textOutput("site_info_Bleaching_Comments")
     
   ),
-  box(title = "What am I looking at?", status = "danger", solidHeader = TRUE, width = 12,
+  box(title = "What Am I Looking At?", status = "danger", solidHeader = TRUE, width = 12,
       p("The raw data gathered from each individual site! Click a cluster to zoom in and learn the corresponding information, including distance to shore, exposure, turbidity, and substrate types!")
   )
 )
