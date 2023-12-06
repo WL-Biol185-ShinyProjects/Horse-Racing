@@ -58,11 +58,6 @@ droppy3 <- fluidPage(
                            choices = unique(coral$Ecoregion_Name)),
                hr(),
                helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
-           ),
-           box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
-               p("Anywhere we see a positively correlated relationship between the regression line on the sea surface temperature plot and the regression line on the percent bleaching plot where both slopes are negative indicates the potential location of a “bright spot”.  Bright spots are anomalies from the global perspective, an ecosystem that doesn’t match global trends. For example, looking at Cuba and Cayman Islands, there is an inverse relationship between SST and percent bleaching - there is an overall decline in temperature and increase in bleaching. We know as educated global citizens that the Earth’s temperature has continued to increase, but for whatever reason, this ecoregion is an exception to that trend.  However, we see that percent bleaching is increasing, indicating confounding or unaccounted-for variables (in this analysis) could also drive the increase, not necessarily just SST."),
-               #p(""),
-               p("Costa Rica and the Panama Pacific Coast is an example of a bright spot, where both temperature and percent bleaching decrease (while global trends increase).")
            )
     ),
     column(width= 8,
@@ -81,9 +76,18 @@ droppy3 <- fluidPage(
                helpText("This plot shows the percentage of bleaching over time for the selected ecoregion.")
            )
     )
+  ),
+  
+  fluidRow(
+    column(width = 12,
+           box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
+               p("Anywhere we see a positively correlated relationship between the regression line on the sea surface temperature plot and the regression line on the percent bleaching plot where both slopes are negative indicates the potential location of a “bright spot”.  Bright spots are anomalies from the global perspective, an ecosystem that doesn’t match global trends. For example, looking at Cuba and Cayman Islands, there is an inverse relationship between SST and percent bleaching - there is an overall decline in temperature and increase in bleaching. We know as educated global citizens that the Earth’s temperature has continued to increase, but for whatever reason, this ecoregion is an exception to that trend.  However, we see that percent bleaching is increasing, indicating confounding or unaccounted-for variables (in this analysis) could also drive the increase, not necessarily just SST."),
+               #p(""),
+               p("Costa Rica and the Panama Pacific Coast is an example of a bright spot, where both temperature and percent bleaching decrease (while global trends increase).")
+           )
   )
 )
-
+)
 
 droppy5 <- fluidPage(
   titlePanel("How Have Countries' Coral Reefs Changed Over Time?"),
