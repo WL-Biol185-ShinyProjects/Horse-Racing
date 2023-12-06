@@ -104,10 +104,10 @@ droppy5 <- fluidPage(
     ),
     column(width = 8,
            box(
-             title = "Temperature Mean (Celsius) by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12, 
+             title = "Sea Surface Temperature Mean (Celsius) by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12, 
              plotOutput("Temperature_Mean2", height = 500),
              hr(),
-             helpText("This plot displays the mean temperature by country for the selected year.")
+             helpText("This plot displays the mean sea surface temperature by country for the selected year.")
            )
            
     )
@@ -142,23 +142,6 @@ droppy6 <- fluidPage(
   )
 )
 
-# droppy7 <- fluidPage(
-#   titlePanel("Regression?"),
-#   fluidRow(
-#     column(width= 8,
-#            box(title = "Temp vs. Bleaching", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Regression", height = 500),
-#                hr(),
-#                helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
-#            )
-#           ),
-#     column(width = 4,
-#       box(
-#         title = "Major Insights", status = "danger", solidHeader = TRUE, collapsible = TRUE, width = 12,
-#         p("REGRESSSIOOOOOON")
-#       )
-#     )
-# )
-# )
 
 droppy7 <- fluidPage(
   titlePanel("Is There a Relationship Between SST and Percent Bleaching?"),
@@ -172,7 +155,7 @@ droppy7 <- fluidPage(
              selectInput("selected_year", "Select Year", choices = unique(Coral_Ordered6$Date_Year)),
              plotOutput("Regression", height = 500),
              hr(),
-             helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
+             helpText("This plot displays a regression anlaysis which allows the user to select from the 40 years of data collected to explore the potential of causality between sea surface temperature and percent bleaching.")
            )
     )
   ),
