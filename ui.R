@@ -18,31 +18,34 @@ droppy1 <- fluidPage(
   theme = shinytheme("flatly"),
   titlePanel("How Have Oceans Changed Over Time?"),
   fluidRow(
-    column(width = 4,
+    column(width = 12,
            box(title = "Ocean", status = "warning", solidHeader = TRUE, width = 12,
                selectInput("Ocean_Name", "Ocean:",
                            choices = unique(coral$Ocean_Name)),
                hr(),
                helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
-           ),
-           box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
-               p("Oceans...")
            )
-    ),
-    column(width= 8,
+    )
+  ),
+  fluidRow(
+    column(width= 6,
            box(title = "Sea Surface Temperature (Celsius) by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean", height = 500),
                hr(),
                helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
+           )
+    ),
+    column(width = 6,
+           box(title = "Percent Bleaching by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Percent_Bleaching", height = 500),
+               hr(),
+               helpText("This plot shows the percentage of bleaching over time for the selected ocean.")
            )
     )
   ),
   
   fluidRow(
-    column(width = 4),
-    column(width = 8,
-           box(title = "Percent Bleaching by Ocean", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Percent_Bleaching", height = 500),
-               hr(),
-               helpText("This plot shows the percentage of bleaching over time for the selected ocean.")
+    column(width= 12,
+           box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
+               p("Oceans...")
            )
     )
   )
