@@ -196,7 +196,7 @@ mappy1 <- fluidPage(
   box(
     title = "Locations for Data Collected",
     status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12,
-    leafletOutput("map", height = 500),
+    leafletOutput("map", height = 900),
     hr(),
     textOutput("site_info_Site_Name"),
     textOutput("site_info_Ocean_Name"),
