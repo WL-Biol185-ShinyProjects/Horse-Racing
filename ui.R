@@ -155,7 +155,7 @@ droppy7 <- fluidPage(
              selectInput("selected_year", "Select Year", choices = unique(Coral_Ordered6$Date_Year)),
              plotOutput("Regression", height = 500),
              hr(),
-             helpText("This plot displays a regression anlaysis which allows the user to select from the 40 years of data collected to explore the potential of causality between sea surface temperature and percent bleaching.")
+             helpText("This plot displays a regression analysis which allows the user to select from the 40 years of data collected to explore the potential of causality between sea surface temperature and percent bleaching.")
            )
     )
   ),
