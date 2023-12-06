@@ -52,7 +52,7 @@ droppy1 <- fluidPage(
 droppy3 <- fluidPage(
   titlePanel("How Have Ecoregions Changed Over Time?"),
   fluidRow(
-    column(width = 4,
+    column(width = 12,
            box(title = "Ecoregion", status = "warning", solidHeader = TRUE, width = 12,
                selectInput("Ecoregion_Name", "Select an Ecoregion:",
                            choices = unique(coral$Ecoregion_Name)),
@@ -60,17 +60,16 @@ droppy3 <- fluidPage(
                helpText("Data from Biological & Chemical Oceanography Data Management Office (2022) Global Bleaching and Environmental Data.")
            )
     ),
-    column(width= 8,
+  ),
+  
+  fluidRow(
+    column(width= 6,
            box(title = "Sea Surface Temperature (Celsius) by Ecoregion", status = "primary", solidHeader = TRUE, width = 12, plotOutput("Temperature_Mean1", height = 500),
                hr(),
                helpText("This plot displays the sea surface temperature variation over time for the selected ecoregion.")
            )
-    )
-  ),
-  
-  fluidRow(
-    column(width = 4),
-    column(width = 8,
+    ),
+    column(width = 6,
            box(title = "Percent Bleaching by Ecoregion", status = "primary", solidHeader = TRUE, background = NULL, width = 12, plotOutput("Percent_Bleaching1", height = 500),
                hr(),
                helpText("This plot shows the percentage of bleaching over time for the selected ecoregion.")
