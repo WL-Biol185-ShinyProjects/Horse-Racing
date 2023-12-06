@@ -326,7 +326,7 @@ references <- fluidPage(
       width = 12,
       box(
         title = "References",
-        status = "info",
+        status = "success",
         solidHeader = TRUE,
         width = 12,
         p("The data we utilized were compiled from the following sources: 1) Reef Check (https://www.reefcheck.org/global-reef-tracker/), (2) Donner et al. (2017), (3) McClanahan et al. (2019), (4) AGRRA (https://www.agrra.org), (5) FRRP (https://ocean.floridamarine.org/FRRP/Home/Reports), (6) Safaie et al. (2018), and (7) Kumagai et al. (2018). Site coordinates were standardized to decimal degrees using Google Earth. Coordinates were compared to ensure a sampling event was not duplicated across multiple data sources. Points were removed if they occurred on land or were more than 1 kilometer from a coral reef. Environmental and site data were added to each site, including reef site exposure, distance to land, mean turbidity, cyclone frequency, and CoRTAD Version 6 environmental data.")
