@@ -161,7 +161,7 @@ droppy6 <- fluidPage(
 # )
 
 droppy7 <- fluidPage(
-  titlePanel("Is There a Relationship Between Sea Surface Temperature and Percent Bleaching?"),
+  titlePanel("Is There a Relationship Between SST and Percent Bleaching?"),
   fluidRow(
     column(width = 12,
            box(
