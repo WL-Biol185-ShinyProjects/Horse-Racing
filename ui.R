@@ -92,7 +92,7 @@ droppy3 <- fluidPage(
 )
 
 droppy5 <- fluidPage(
-  titlePanel("How Have Countries' Coral Reefs Changed Over Time?"),
+  titlePanel("How Has SST Changed Over Time in each Country Sampled?"),
   fluidRow(
     column(width =4,
            box(
@@ -116,7 +116,7 @@ droppy5 <- fluidPage(
   fluidRow(  
     column(width = 12,
            box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
-               p("Countries...")
+               p("This plot allows the user to select from the 40 years of data collected to see the average sea surface temperature (celsius) during that year for all countries sampled.")
     )
   )
 )
