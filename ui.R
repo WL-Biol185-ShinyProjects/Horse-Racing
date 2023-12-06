@@ -227,7 +227,7 @@ mappy1 <- fluidPage(
 
 
 textbox <- fluidPage(
-  titlePanel("Welcome to the Coral Reefs Dashboard!"),
+  titlePanel(h1("Welcome to the Coral Reefs Dashboard!", align = "center")),
   fluidRow(
     column(
       width = 10,
