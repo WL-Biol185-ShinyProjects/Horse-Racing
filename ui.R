@@ -100,13 +100,8 @@ droppy5 <- fluidPage(
              sliderInput("Date_Year", "Year:", sep = "",
                          min = 1980, max = 2020, value = 2000, step =NULL
              )
-           ),
-           box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
-               p("Countries...")
            )
-    )
-  ),
-  fluidRow(  
+    ),
     column(width = 8,
            box(
              title = "Temperature Mean (Celsius) by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12, 
@@ -114,8 +109,17 @@ droppy5 <- fluidPage(
              hr(),
              helpText("This plot displays the mean temperature by country for the selected year.")
            )
+           
+    )
+  ),
+
+  fluidRow(  
+    column(width = 12,
+           box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
+               p("Countries...")
     )
   )
+)
 )
 
   
