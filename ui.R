@@ -304,7 +304,7 @@ references <- fluidPage(
         solidHeader = TRUE,
         width = 12,
         p(style = "font-weight: bold;", "Pari, Estelle, and Abby!"),
-        p("Pari is a senior Biology major and MESA minor hailing from Medfield, Massachussetts. __Pari fun thing here__"),
+        p("Pari is a senior Biology major and MESA minor hailing from Medfield, Massachussetts. She enjoys swimming in the ocean every summer. She wants to help save the corals so the oceans can remain healthy and beautiful!"),
         p("Estelle is a junior Biology and Environmental Studies double major from Dallas, Texas. Estelle lived in Malaysia for nine years, which is why she loves coral reefs so much!"),
         p("Abby is a senior Geology and Environmental Studies double major and Data Science minor from The Woodlands, Texas. Two summers ago, she did research with Dr. Lisa Greer on the coral reefs in Belize, the inspiration for this project!")
       )
