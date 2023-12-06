@@ -92,7 +92,7 @@ droppy3 <- fluidPage(
 )
 
 droppy5 <- fluidPage(
-  titlePanel("How Has SST Changed Over Time in each Country Sampled?"),
+  titlePanel("How Has SST Changed Over Time in Each Country Sampled?"),
   fluidRow(
     column(width =4,
            box(
@@ -179,7 +179,7 @@ droppy7 <- fluidPage(
   fluidRow(
     column(width = 12,
            box(
-             title = "Dare we call it a refugium?",
+             title = "Dare We Call It A Refugium?",
              status = "danger",
              solidHeader = TRUE,
              collapsible = TRUE,
