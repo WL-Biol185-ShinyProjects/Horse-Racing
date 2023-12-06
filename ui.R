@@ -98,8 +98,9 @@ droppy5 <- fluidPage(
            box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
                p("Countries...")
            )
-    ),
-    
+    )
+  ),
+  fluidRow(  
     column(width = 8,
            box(
              title = "Temperature Mean (Celsius) by Country", status = "primary", solidHeader = TRUE, collapsible = TRUE, width = 12, 
@@ -152,7 +153,7 @@ droppy6 <- fluidPage(
 droppy7 <- fluidPage(
   titlePanel("Is There a Relationship Between Sea Surface Temperature and Percent Bleaching?"),
   fluidRow(
-    column(width = 8,
+    column(width = 12,
            box(
              title = "Temp vs. Bleaching",
              status = "primary",
@@ -163,8 +164,10 @@ droppy7 <- fluidPage(
              hr(),
              helpText("This plot displays the sea surface temperature variation over time for the selected ocean.")
            )
-    ),
-    column(width = 4,
+    )
+  ),
+  fluidRow(
+    column(width = 12,
            box(
              title = "Dare we call it a refugium?",
              status = "danger",
