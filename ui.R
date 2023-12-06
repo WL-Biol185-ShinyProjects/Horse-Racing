@@ -45,7 +45,7 @@ droppy1 <- fluidPage(
   fluidRow(
     column(width= 12,
            box(title = "Major Insights", status = "danger", solidHeader = TRUE, width = 12,
-               p("Oceans...")
+               p("The Intergovernmental Panel on Climate Change in 2018 predicted that effectively all coral reefs would die if global warming surpassed the threshold of 2 degrees Celsius. However, predictions like this differ from recent field studies on coral reefs that show pockets where corals do not bleach and die. It is critical that we do not ignore these climate-change refuges, and rather, locate them to determine what circumstances are most conducive for coral survival. These particular plots allow the user to clearly identify coral reef ‘bright spots’. 'Bright spots' are places, that despite thermal stress events, experience less than expected bleaching. For example, the Atlantic Ocean appears to contain bright spots as while Sea Surface Temperature has increased over the past 40 years, its corals have experienced a decrease in bleaching.")
            )
     )
   )
