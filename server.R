@@ -186,7 +186,18 @@ function(input, output) {
                                                        dom = 'Bfrtip',
                                                        buttons = list(list(extend = 'csv', filename= 'coral'))),
                                         rownames = FALSE)
-                                
+  
+  
+  
+  output$downloadData <- downloadHandler(
+    filename = function() {
+      paste("data-", Sys.Date(), ".csv", sep="")
+    },
+    content = function(file) {
+      write.csv(coral, file)
+    }
+  )
+  
   
   #MAP 
   

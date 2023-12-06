@@ -333,6 +333,19 @@ references <- fluidPage(
       )
     )
     
+  ),
+  
+  fluidRow(
+    column(
+      width = 12,
+      box(
+        title = "Download Complete Dataset",
+        status = "info",
+        solidHeader = TRUE,
+        width = 12,
+        downloadButton("downloadData", "Download")
+      )
+    )
   )
 )
 
